@@ -1,0 +1,72 @@
+{
+  "NetworkDeviceList": [
+    {
+      "NetworkDevice": {
+        "MetaData": {
+          "JtiConfig": {
+            "Version": "17.2R1",
+            "Username": "lab",
+            "Password": "m0naco",
+            "ReportRate": 60,
+            "Dscp": 20,
+            "DeviceLocalPort": 21112,
+            "SensorList": [
+              {
+                "Name": "Interface_Sensor",
+                "Resource": "/junos/system/linecard/interface/"
+              },
+              {
+                "Name": "Packet_usage",
+                "Resource": "/junos/system/linecard/packet/usage/"
+              }
+            ]
+          }
+        },
+        "ManagementIp": "192.168.1.1",
+        "Name": "jedi-vmx-1-vcp",
+        "Source": "user.jti",
+        "NetworkDeviceId": "jedi-vmx-1-vcp",
+        "ChassisType": "coreswitch",
+        "ConnectionInfo": [
+          {
+            "remote_interface_name": "ge-0/0/0",
+            "local_interface_name": "ge-0/0/0",
+            "remote_system_id": "jedi-vmx-2-vcp"
+          }
+        ]
+      }
+    },
+    {
+      "NetworkDevice": {
+        "MetaData": {
+          "JtiConfig": {
+            "Version": "17.2R1",
+            "Username": "lab",
+            "Password": "m0naco",
+            "ReportRate": 60,
+            "Dscp": 20,
+            "DeviceLocalPort": 21112,
+            "SensorList": [
+              {
+                "Name": "Packet_usage",
+                "Resource": "/junos/system/linecard/packet/usage/"
+              }
+            ]
+          }
+        },
+        "ManagementIp": "192.168.1.2",
+        "Name": "jedi-vmx-2-vcp",
+        "Source": "user.jti",
+        "NetworkDeviceId": "jedi-vmx-2-vcp",
+        "ChassisType": "coreswitch",
+        "ConnectionInfo": [
+          {
+            "remote_interface_name": "ge-0/0/0",
+            "local_interface_name": "ge-0/0/0",
+            "remote_system_id": "jedi-vmx-1-vcp"
+          }
+        ]
+      }
+    }
+  ]
+}

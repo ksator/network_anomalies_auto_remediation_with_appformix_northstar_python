@@ -1,0 +1,30 @@
+---
+username: "lab"
+password: "m0naco"
+devices: 
+    - ip: "192.168.1.1"
+      name: "jedi-vmx-1-vcp"
+      type: "coreswitch"
+      version: "17.2R1" 
+      sensors: 
+          - name: "Interface_Sensor"
+            ressource: "/junos/system/linecard/interface/"
+          - name: "Packet_usage"
+            ressource: "/junos/system/linecard/packet/usage/"
+      connections: 
+           - local_interface: "ge-0/0/0"
+             remote_interface: "ge-0/0/0"
+             remote_name: "jedi-vmx-2-vcp"
+    - ip: "192.168.1.2"
+      name: "jedi-vmx-2-vcp"
+      type: "coreswitch"
+      version: "17.2R1"
+      sensors:
+          - name: "Packet_usage"
+            ressource: "/junos/system/linecard/packet/usage/"
+      connections:
+           - local_interface: "ge-0/0/0"
+             remote_interface: "ge-0/0/0"
+             remote_name: "jedi-vmx-1-vcp"
+
+ 
