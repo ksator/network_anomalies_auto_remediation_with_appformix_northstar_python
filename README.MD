@@ -2,15 +2,15 @@
 
 ## About this repo
 
-This repository has scripts for Appformix
+This repository has scripts for Appformix.  
+This has been tested with an Appformix standalone setup running version 2.15.2 
 
 ## How to clone this repository
 
-Run these commands on your laptop:
+From your appformix server, run these commands on your laptop:
 ```
 sudo -s
 git clone https://github.com/ksator/appformix_demo_scripts.git 
-cd appformix_demo_scripts
 ```
 
 ## Configure Appformix for network devices monitoring
@@ -35,6 +35,8 @@ In order to configure AppFormix for network devices monitoring, here are the ste
 Here's how to manage the 'network devices json configuration file' with automation:  
 Define the list of devices you want to monitor using Appformix, and the details you want to collect from them:    
 ```
+cd appformix_demo_scripts
+ls
 vi devices.yml
 ```
 The script [**render_devices.py**](render_devices.py) renders the template [**devices.j2**](devices.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**network_devices.json**](network_devices.json).  
@@ -43,14 +45,14 @@ python render_devices.py
 more network_devices.json
 ```
 
-Update ```group_vars/all``` file: 
+From your appformix directory, update ```group_vars/all``` file: 
 ```
 cd appformix-2.15.2/
 vi group_vars/all
 ```
 to make sure it contains this:
 ```
-network_device_file_name: /path_to/network_devices.json
+network_device_file_name: /path_to_appformix_demo_scripts_directory/network_devices.json
 appformix_network_device_monitoring_enabled: true
 appformix_jti_network_device_monitoring_enabled: true
 appformix_plugins:
@@ -59,12 +61,11 @@ appformix_plugins:
    - plugin_info: 'certified_plugins/snmp_network_device_usage.json'
 ```
 
-Then, re-run the 'Appformix installation Ansible playbook'
+Then, from your appformix directory, re-run the 'Appformix installation Ansible playbook':
 ```
 cd appformix-2.15.2/
 ansible-playbook -i inventory appformix_standalone.yml
 ```
-
 
 ## Continuous integration with Travis CI
 
@@ -74,7 +75,6 @@ The files [**.travis.yml**](.travis.yml) and [**requirements.txt**](requirements
 
 Here's the last build status
 [![Build Status](https://travis-ci.org/ksator/appformix_demo_scripts.svg?branch=master)](https://travis-ci.org/ksator/appformix_demo_scripts)
-
 
 ## Looking for more automation solutions
 
