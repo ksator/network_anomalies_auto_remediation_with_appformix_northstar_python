@@ -13,6 +13,14 @@ sudo -s
 git clone https://github.com/ksator/appformix_demo_scripts.git 
 ```
 
+## Configure an SNMP community on network devices
+For Appformix to monitor network devices using SNMP, configure the SNMP community used by Appformix on the network devices:  
+```
+set snmp community public
+commit and-quit
+```
+
+
 ## Configure Appformix for network devices monitoring
 
 Appformix supports network devices monitoring using SNMP and JTI (Juniper Telemetry Interface) streaming telemetry.  
