@@ -10,6 +10,7 @@ install:
 
 script:
   - python -m py_compile render_devices.py
+  - python -m py_compile configure_snmp.py
   
 branches:
   only:
