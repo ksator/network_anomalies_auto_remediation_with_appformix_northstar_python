@@ -31,8 +31,8 @@ more network_devices.json
 
 ### Continuous integration with Travis CI
 
-There is a github webhook with Travis CI
-The syntax of the python scripts and ansible playbooks in this repository are tested automatically by Travis CI.  
+There is a github webhook with Travis CI  
+The syntax of the python scripts in this repository are tested automatically by Travis CI.  
 The files [**.travis.yml**](.travis.yml) and [**requirements.txt**](requirements.txt) at the root of this repository are used for this.  
 
 Here's the last build status
