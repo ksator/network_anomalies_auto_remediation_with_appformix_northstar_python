@@ -3,14 +3,25 @@
 ## About this repo
 
 This repository has scripts for Appformix.  
-This has been tested with an Appformix standalone setup running version 2.15.2 
+This has been tested with an Appformix standalone setup running version 2.15.2 installed on Ubuntu 16.04
 
-## How to clone this repository
+## Clone this repository
 
-From your appformix server, run these commands on your laptop:
+From your appformix server, run these commands:
 ```
 sudo -s
 git clone https://github.com/ksator/appformix_demo_scripts.git 
+```
+
+## Requirements to use this repository 
+
+Install the python library junos-eznc (also know as PyEZ) and its dependencies. Run these commands on your appformix server:
+```
+sudo -s
+apt-get update
+apt-get upgrade
+apt-get install -y python-dev libxml2-dev python-pip libxslt1-dev build-essential libssl-dev libffi-dev git
+pip install junos-eznc wget requests ipaddress cryptography 
 ```
 
 ## Configure Appformix for network devices monitoring
