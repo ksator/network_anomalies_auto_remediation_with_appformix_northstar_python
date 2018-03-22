@@ -17,7 +17,7 @@ Appformix supports network devices monitoring using SNMP and JTI telemetry.
 - For SNMP, the polling interval is 60s.  
 - For JTI streaming telemetry, Appformix automatically configures the network devices, with an interval of 60s.  
 
-Define the list of devices you want to monitor using Appformix, and thye details you want to collect:    
+Define the list of devices you want to monitor using Appformix, and the details you want to collect:    
 ```
 vi devices.yml
 ```
@@ -30,7 +30,7 @@ more network_devices.json
 ### Continuous integration with Travis CI
 
 There is a github webhook with Travis CI
-The syntax of the python scripts and ansible playbooks in this repository are tested automatically by Travis CI. 
+The syntax of the python scripts and ansible playbooks in this repository are tested automatically by Travis CI.  
 The files [**.travis.yml**](.travis.yml) and [**requirements.txt**](requirements.txt) at the root of this repository are used for this.  
 
 Here's the last build status
