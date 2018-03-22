@@ -19,6 +19,10 @@ Appformix supports network devices monitoring using SNMP and JTI telemetry.
 - For SNMP, the polling interval is 60s.  
 - For JTI streaming telemetry, Appformix automatically configures the network devices, with an interval of 60s.  
 
+Here's the [**documentation**](https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-ansible-configure-network-device.html)  
+
+Here's how to manage the network devices json configuration file with automation:  
+
 Define the list of devices you want to monitor using Appformix, and the details you want to collect:    
 ```
 vi devices.yml
