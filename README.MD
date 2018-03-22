@@ -33,7 +33,6 @@ In order to configure AppFormix for network devices monitoring, here are the ste
 - re run the 'Appformix installation Ansible playbook'.
 
 Here's how to manage the 'network devices json configuration file' with automation:  
-
 Define the list of devices you want to monitor using Appformix, and the details you want to collect from them:    
 ```
 vi devices.yml
@@ -44,6 +43,29 @@ python render_devices.py
 more network_devices.json
 ```
 
+Update ```group_vars/all``` file: 
+```
+cd appformix-2.15.2/
+vi group_vars/all
+```
+to make sure it contains this:
+```
+network_device_file_name: /path_to/network_devices.json
+appformix_network_device_monitoring_enabled: true
+appformix_jti_network_device_monitoring_enabled: true
+appformix_plugins:
+   - plugin_info: 'certified_plugins/jti_network_device_usage.json'
+   - plugin_info: 'certified_plugins/snmp_network_device_routing_engine.json'
+   - plugin_info: 'certified_plugins/snmp_network_device_usage.json'
+```
+
+Then, re-run the 'Appformix installation Ansible playbook'
+```
+cd appformix-2.15.2/
+ansible-playbook -i inventory appformix_standalone.yml
+```
+
+
 ## Continuous integration with Travis CI
 
 There is a github webhook with Travis CI  
@@ -52,6 +74,7 @@ The files [**.travis.yml**](.travis.yml) and [**requirements.txt**](requirements
 
 Here's the last build status
 [![Build Status](https://travis-ci.org/ksator/appformix_demo_scripts.svg?branch=master)](https://travis-ci.org/ksator/appformix_demo_scripts)
+
 
 ## Looking for more automation solutions
 
