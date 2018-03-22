@@ -22,14 +22,10 @@ Appformix supports network devices monitoring using SNMP and JTI (Juniper Teleme
 Here's the [**documentation**](https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-ansible-configure-network-device.html)  
 
 In order to configure AppFormix for network devices monitoring, here are the steps:
-- manage the 'network devices json configuration' file.  
-  This file is used to define the list of devices you want to monitor using Appformix, and the details you want to collect from them.    
-- Indicate to the 'Appformix installation Ansible playbook' which 'network devices json configuration file' to use.  
-  This is done by setting the variable ```network_device_file_name``` in ```group_vars/all```
-- Set the flag to enable appformix network device monitor.  
-  This is done by setting the variable ```appformix_network_device_monitoring_enabled``` to ```true``` in ```group_vars/all```
-- Enable the Appformix plugins for network devices monitoring.  
-  This is done by setting the variable ```appformix_plugins``` in ```group_vars/all```
+- manage the 'network devices json configuration' file. This file is used to define the list of devices you want to monitor using Appformix, and the details you want to collect from them.    
+- Indicate to the 'Appformix installation Ansible playbook' which 'network devices json configuration file' to use. This is done by setting the variable ```network_device_file_name``` in ```group_vars/all```
+- Set the flag to enable appformix network device monitor. This is done by setting the variable ```appformix_network_device_monitoring_enabled``` to ```true``` in ```group_vars/all```
+- Enable the Appformix plugins for network devices monitoring. This is done by setting the variable ```appformix_plugins``` in ```group_vars/all```
 - re run the 'Appformix installation Ansible playbook'.
 
 Here's how to manage the 'network devices json configuration file' with automation:  
