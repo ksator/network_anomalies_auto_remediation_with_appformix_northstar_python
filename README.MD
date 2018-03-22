@@ -32,11 +32,10 @@ Here's how to manage the 'network devices json configuration file' with automati
 Define the list of devices you want to monitor using Appformix, and the details you want to collect from them:    
 ```
 cd appformix_demo_scripts
-ls
 vi devices.yml
 ```
 
-The script [**render_devices.py**](render_devices.py) renders the template [**devices.j2**](devices.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**network_devices.json**](network_devices.json).  
+Execute the python script [**render_devices.py**](render_devices.py). It renders the template [**devices.j2**](devices.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**network_devices.json**](network_devices.json).  
 ```
 python render_devices.py
 more network_devices.json
