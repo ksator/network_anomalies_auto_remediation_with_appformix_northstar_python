@@ -15,10 +15,14 @@ f=open('snmp.conf','w')
 f.write(my_template.render(my_vars))
 f.close()
 
-for item in snmp_2c.devices: 
-    device=Device (host="item.ip", user="jti.username", password="jti.password")
+for item in my_vars['snmp_2c']['devices']:
+    device=Device (host=item['ip'], user=my_vars['jti']['username'], password=my_vars['jti']['password'])
     device.open()
-    cfg=Config(device) 
+    cfg=Config(device)
     cfg.load(path='snmp.conf', format='set')
     cfg.commit()
     device.close()
+    print 'configured device ' + item['ip'] + ' with snmp community ' +  my_vars['snmp_2c']['community']
+
+
+
