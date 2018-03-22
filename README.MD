@@ -21,7 +21,7 @@ Appformix supports network devices monitoring using SNMP and JTI telemetry.
 
 Here's the [**documentation**](https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-ansible-configure-network-device.html)  
 
-Here's how to manage the network devices json configuration file with automation:  
+In order to configure AppFormix for network devices monitoring, we use a network devices json configuration file.  Here's how to manage this file with automation:  
 
 Define the list of devices you want to monitor using Appformix, and the details you want to collect:    
 ```
