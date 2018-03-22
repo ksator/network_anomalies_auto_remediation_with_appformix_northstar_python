@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ksator/appformix_demo_scripts.svg?branch=master)](https://travis-ci.org/ksator/appformix_demo_scripts)  
+
 ### About this repo
 
 This repository has scripts for Appformix
@@ -35,7 +37,6 @@ The files [**.travis.yml**](.travis.yml) and [**requirements.txt**](requirements
 
 Here's the last build status
 [![Build Status](https://travis-ci.org/ksator/appformix_demo_scripts.svg?branch=master)](https://travis-ci.org/ksator/appformix_demo_scripts)
-
 
 ### Looking for more automation solutions
 
