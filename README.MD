@@ -15,7 +15,7 @@ cd appformix_demo_scripts
 
 ### Configure Appformix for network devices monitoring
 
-Appformix supports network devices monitoring using SNMP and JTI streaming telemetry.  
+Appformix supports network devices monitoring using SNMP and JTI (Juniper Telemetry Interface) streaming telemetry.  
 - For SNMP, the polling interval is 60s.  
 - For JTI streaming telemetry, Appformix automatically configures the network devices. The interval configured on network devices is 60s.  
 
