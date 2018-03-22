@@ -68,5 +68,56 @@
         ]
       }
     }
+    {
+      "NetworkDevice": {
+        "MetaData": {
+          "SnmpConfig": {
+            "Version": "2c",
+            "Community": "public",
+            "OIDList": [
+                "IF-MIB::ifTable",
+                "1.3.6.1.4.1.2636.3.4.2"
+            ]
+          }
+        },
+        "ManagementIp": "172.30.52.85",
+        "Name": "dc-vmx-1",
+        "Source": "user.snmp",
+        "NetworkDeviceId": "dc-vmx-1",
+        "ChassisType": "coreswitch",
+        "ConnectionInfo": [
+          {
+            "remote_interface_name": "ge-0/0/0",
+            "local_interface_name": "ge-0/0/0",
+            "remote_system_id": "dc-vmx-1"
+          }
+        ]
+      }
+    },
+    {
+      "NetworkDevice": {
+        "MetaData": {
+          "SnmpConfig": {
+            "Version": "2c",
+            "Community": "public",
+            "OIDList": [
+                "IF-MIB::ifTable"
+            ]
+          }
+        },
+        "ManagementIp": "172.30.52.86",
+        "Name": "dc-vmx-2",
+        "Source": "user.snmp",
+        "NetworkDeviceId": "dc-vmx-2",
+        "ChassisType": "coreswitch",
+        "ConnectionInfo": [
+          {
+            "remote_interface_name": "ge-0/0/0",
+            "local_interface_name": "ge-0/0/0",
+            "remote_system_id": "dc-vmx-1"
+          }
+        ]
+      }
+    }
   ]
 }

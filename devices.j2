@@ -1,13 +1,13 @@
 {
   "NetworkDeviceList": [
-    {%- for device in devices %}
+    {%- for device in jti.devices %}
     {
       "NetworkDevice": {
         "MetaData": {
           "JtiConfig": {
             "Version": "{{ device.version }}",
-            "Username": "{{ username }}",
-            "Password": "{{ password }}",
+            "Username": "{{ jti.username }}",
+            "Password": "{{ jti.password }}",
             "ReportRate": 60,
             "Dscp": 20,
             "DeviceLocalPort": 21112,
@@ -28,6 +28,49 @@
         "ManagementIp": "{{ device.ip }}",
         "Name": "{{ device.name }}",
         "Source": "user.jti",
+        "NetworkDeviceId": "{{ device.name }}",
+        "ChassisType": "{{ device.type }}",
+        "ConnectionInfo": [
+          {%- for connection in device.connections %}
+          {
+            "remote_interface_name": "{{ connection.remote_interface }}",
+            "local_interface_name": "{{ connection.local_interface }}",
+            "remote_system_id": "{{ connection.remote_name }}"
+          {%- if not loop.last %}
+          },
+          {%- else %}
+          }
+          {%- endif %}
+          {%- endfor %}
+        ]
+      }
+    {%- if not loop.last %}
+    },
+    {%- else %}
+    }
+    {%- endif %}
+    {%- endfor %}
+    {%- for device in snmp.devices %}
+    {
+      "NetworkDevice": {
+        "MetaData": {
+          "SnmpConfig": {
+            "Version": "2c",
+            "Community": "{{ snmp.community }}",
+            "OIDList": [
+              {%- for oid in device.oidlist %}
+                "{{ oid }}"
+              {%- if not loop.last -%}
+              ,
+              {%- else %}
+              {%- endif %}
+              {%- endfor %}
+            ]
+          }
+        },
+        "ManagementIp": "{{ device.ip }}",
+        "Name": "{{ device.name }}",
+        "Source": "user.snmp",
         "NetworkDeviceId": "{{ device.name }}",
         "ChassisType": "{{ device.type }}",
         "ConnectionInfo": [

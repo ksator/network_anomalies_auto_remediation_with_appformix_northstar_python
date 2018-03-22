@@ -2,11 +2,11 @@ from jinja2 import Template
 from yaml import load
 
 f=open('devices.yml', 'r')
-my_vars=load(f.read())
+my_vars = load(f.read())
 f.close()
 
-f=open('templates/devices_jti.j2')
-my_template=Template(f.read())
+f=open('devices.j2')
+my_template = Template(f.read())
 f.close()
 
 f=open('network_devices.json','w')
