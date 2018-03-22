@@ -75,6 +75,48 @@ cd appformix-2.15.2/
 ansible-playbook -i inventory appformix_standalone.yml
 ```
 
+for JTI monitoring, Appformix should configures the network devices using NETCONF 
+```
+lab@jedi-vmx-1-vcp> show system commit
+0   2018-03-22 16:32:37 UTC by lab via netconf
+1   2018-03-22 16:32:33 UTC by lab via netconf
+```
+```
+lab@jedi-vmx-1-vcp> show configuration | compare rollback 1
+[edit services analytics]
++    sensor Interface_Sensor {
++        server-name appformix-telemetry;
++        export-name appformix;
++        resource /junos/system/linecard/interface/;
++    }
+
+lab@jedi-vmx-1-vcp> show configuration | compare rollback 2
+[edit]
++  services {
++      analytics {
++          streaming-server appformix-telemetry {
++              remote-address 172.30.52.157;
++              remote-port 42596;
++          }
++          export-profile appformix {
++              local-address 192.168.1.1;
++              local-port 21112;
++              dscp 20;
++              reporting-rate 60;
++              format gpb;
++              transport udp;
++          }
++          sensor Interface_Sensor {
++              server-name appformix-telemetry;
++              export-name appformix;
++              resource /junos/system/linecard/interface/;
++          }
++      }
++  }
+
+lab@jedi-vmx-1-vcp>
+
+```
 ## Continuous integration with Travis CI
 
 There is a github webhook with Travis CI  
