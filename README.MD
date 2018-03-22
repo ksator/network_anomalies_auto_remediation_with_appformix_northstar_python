@@ -13,14 +13,6 @@ sudo -s
 git clone https://github.com/ksator/appformix_demo_scripts.git 
 ```
 
-## Configure an SNMP community on network devices
-For Appformix to monitor network devices using SNMP, configure the SNMP community used by Appformix on the network devices:  
-```
-set snmp community public
-commit and-quit
-```
-
-
 ## Configure Appformix for network devices monitoring
 
 Appformix supports network devices monitoring using SNMP and JTI (Juniper Telemetry Interface) streaming telemetry.  
@@ -47,11 +39,16 @@ cd appformix_demo_scripts
 ls
 vi devices.yml
 ```
+
+Configure the network devices with the SNMP commninity used by Appformix:  
+The script [**snmp.py**](snmp.py) renders the template [**snmp.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**snmp.conf**](snmp.conf). This file is loaded and commited on all network devices   
+
 The script [**render_devices.py**](render_devices.py) renders the template [**devices.j2**](devices.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**network_devices.json**](network_devices.json).  
 ```
 python render_devices.py
 more network_devices.json
 ```
+
 
 From your appformix directory, update ```group_vars/all``` file: 
 ```
