@@ -1,5 +1,7 @@
 {
   "NetworkDeviceList": [
+    {#- configure devices monitoring with JTI streaming telemetry #}
+    {%- if use_jti == True %} 
     {%- for device in jti.devices %}
     {
       "NetworkDevice": {
@@ -50,13 +52,16 @@
     }
     {%- endif %}
     {%- endfor %}
-    {%- for device in snmp.devices %}
+    {%- endif %}
+    {#- configure devices monitoring with SNMP 2c #}
+    {%- if use_snmp_2c == True %} 
+    {%- for device in snmp_2c.devices %}
     {
       "NetworkDevice": {
         "MetaData": {
           "SnmpConfig": {
             "Version": "2c",
-            "Community": "{{ snmp.community }}",
+            "Community": "{{ snmp_2c.community }}",
             "OIDList": [
               {%- for oid in device.oidlist %}
                 "{{ oid }}"
@@ -93,5 +98,7 @@
     }
     {%- endif %}
     {%- endfor %}
+    {%- endif %}
   ]
 }
+
