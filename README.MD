@@ -46,16 +46,6 @@ python render_devices.py
 more network_devices.json
 ```
 
-You need to configure the network devices with the SNMP commninity used by Appformix. The script [**configure_snmp.py**](configure_snmp.py) renders the template [**snmp.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**snmp.conf**](snmp.conf). This file is then loaded and commited on all network devices   
-```
-python configure_snmp.py
-configured device 172.30.52.85 with snmp community public
-configured device 172.30.52.86 with snmp community public
-```
-```
-more snmp.conf
-```
-
 From your appformix directory, update ```group_vars/all``` file: 
 ```
 cd appformix-2.15.2/
@@ -77,6 +67,19 @@ Then, from your appformix directory, re-run the 'Appformix installation Ansible 
 cd appformix-2.15.2/
 ansible-playbook -i inventory appformix_standalone.yml
 ```
+## Configure the network devices with the SNMP commninity used by Appformix
+
+You need to configure the network devices with the SNMP commninity used by Appformix. The script [**configure_snmp.py**](configure_snmp.py) renders the template [**snmp.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**snmp.conf**](snmp.conf). This file is then loaded and commited on all network devices   
+```
+python configure_snmp.py
+configured device 172.30.52.85 with snmp community public
+configured device 172.30.52.86 with snmp community public
+```
+```
+more snmp.conf
+```
+
+## Verify the network devices configuration for Appformix monitoring using telemetry
 
 for JTI monitoring, Appformix should configures the network devices using NETCONF 
 ```
