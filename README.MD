@@ -46,9 +46,15 @@ python render_devices.py
 more network_devices.json
 ```
 
-You need to configure the network devices with the SNMP commninity used by Appformix:  
-The script [**configure_snmp.py**](configure_snmp.py) renders the template [**snmp.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**snmp.conf**](snmp.conf). This file is loaded and commited on all network devices   
-
+You need to configure the network devices with the SNMP commninity used by Appformix. The script [**configure_snmp.py**](configure_snmp.py) renders the template [**snmp.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**snmp.conf**](snmp.conf). This file is then loaded and commited on all network devices   
+```
+python configure_snmp.py
+configured device 172.30.52.85 with snmp community public
+configured device 172.30.52.86 with snmp community public
+```
+```
+more snmp.conf
+```
 
 From your appformix directory, update ```group_vars/all``` file: 
 ```
