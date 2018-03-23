@@ -14,10 +14,6 @@
               {
                 "Name": "Interface_Sensor",
                 "Resource": "/junos/system/linecard/interface/"
-              },
-              {
-                "Name": "Packet_usage",
-                "Resource": "/junos/system/linecard/packet/usage/"
               }
             ]
           }

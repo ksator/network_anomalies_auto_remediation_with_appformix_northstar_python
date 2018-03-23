@@ -130,7 +130,7 @@ lab@jedi-vmx-1-vcp> show configuration | compare rollback 2
 lab@jedi-vmx-1-vcp>
 
 ```
-If Appformix has serveral ip addresses, and you want to configure the network devices to use another IP address for telemetry server than the one configured by appformix, execute the python script [**telemetry.py**](telemetry.py). 
+If Appformix has serveral ip addresses, and you want to configure the network devices to use another IP address  than the one configured by appformix for telemetry server, execute the python script [**telemetry.py**](telemetry.py). 
 The python script [**telemetry.py**](telemetry.py) renders the template [**telemetry.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**telemetry.conf**](telemetry.conf). This file is then loaded and commited on all network devices used with JTI telemetry.  
 
 ```
