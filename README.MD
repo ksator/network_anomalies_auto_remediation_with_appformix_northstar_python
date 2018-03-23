@@ -3,7 +3,13 @@
 ## About this repo
 
 This repository has scripts for Appformix with network devices monitoring.  
+It has automation content to: 
+- add to appformix network devices to monitor
+- configure the network devices with the SNMP commnunity used by Appformix to monitor network devices 
+- configure the network devices to use different IP address than the one configured by appformix on network devices for telemetry server
+
 I am using them with an Appformix standalone setup running version 2.15.2 installed on Ubuntu 16.04
+
 
 ## Clone this repository
 
@@ -130,7 +136,7 @@ lab@jedi-vmx-1-vcp> show configuration | compare rollback 2
 lab@jedi-vmx-1-vcp>
 
 ```
-If Appformix has serveral ip addresses, and you want to configure the network devices to use another IP address  than the one configured by appformix for telemetry server, execute the python script [**telemetry.py**](telemetry.py). 
+If Appformix has serveral ip addresses, and you want to configure the network devices to use a different IP address than the one configured by appformix for telemetry server, execute the python script [**telemetry.py**](telemetry.py). 
 The python script [**telemetry.py**](telemetry.py) renders the template [**telemetry.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**telemetry.conf**](telemetry.conf). This file is then loaded and commited on all network devices used with JTI telemetry.  
 
 ```
