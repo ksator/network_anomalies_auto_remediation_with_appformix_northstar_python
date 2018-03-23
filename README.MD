@@ -24,7 +24,7 @@ apt-get install -y python-dev libxml2-dev python-pip libxslt1-dev build-essentia
 pip install junos-eznc wget requests ipaddress cryptography 
 ```
 
-## Configure Appformix for network devices monitoring
+## Configure Appformix to add network devices to monitor
 
 Appformix supports network devices monitoring using SNMP and JTI (Juniper Telemetry Interface) streaming telemetry.  
 - For SNMP, the polling interval is 60s.  
@@ -75,7 +75,8 @@ ansible-playbook -i inventory appformix_standalone.yml
 ```
 ## Configure the network devices with the SNMP community used by Appformix
 
-You need to configure the network devices with the SNMP commninity used by Appformix. The script [**configure_snmp.py**](configure_snmp.py) renders the template [**snmp.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**snmp.conf**](snmp.conf). This file is then loaded and commited on all network devices   
+You need to configure the network devices with the SNMP commninity used by Appformix. The script [**configure_snmp.py**](configure_snmp.py) renders the template [**snmp.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**snmp.conf**](snmp.conf). This file is then loaded and commited on all network devices used with SNMP monitoring.
+ 
 ```
 python configure_snmp.py
 configured device 172.30.52.85 with snmp community public
@@ -129,10 +130,15 @@ lab@jedi-vmx-1-vcp> show configuration | compare rollback 2
 lab@jedi-vmx-1-vcp>
 
 ```
-If Appformix has serveral ip addresses, and you want to configure the network devices to use another IP address for telemetry server, execute this script:
+If Appformix has serveral ip addresses, and you want to configure the network devices to use another IP address for telemetry server than the one configured by appformix, execute the python script [**telemetry.py**](telemetry.py). 
+The python script [**telemetry.py**](telemetry.py) renders the template [**telemetry.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**telemetry.conf**](telemetry.conf). This file is then loaded and commited on all network devices used with JTI telemetry.  
 
 ```
-# python telemetry.py
+cd appformix_demo_scripts
+vi devices.yml
+```
+```
+python telemetry.py
 configured device 172.30.52.155 with telemetry server ip 192.168.1.100
 configured device 172.30.52.156 with telemetry server ip 192.168.1.100
 ```
@@ -140,6 +146,7 @@ configured device 172.30.52.156 with telemetry server ip 192.168.1.100
 # more telemetry.conf
 set services analytics streaming-server appformix-telemetry remote-address 192.168.1.100
 ```
+Verify on your network devices: 
 ```
 lab@jedi-vmx-1-vcp> show configuration services analytics streaming-server appformix-telemetry remote-address
 remote-address 192.168.1.100;
