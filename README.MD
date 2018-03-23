@@ -2,12 +2,12 @@
 
 ## About this repo
 
-This repository has scripts for Appformix.  
-This has been tested with an Appformix standalone setup running version 2.15.2 installed on Ubuntu 16.04
+This repository has scripts for Appformix with network devices monitoring.  
+I am using them with an Appformix standalone setup running version 2.15.2 installed on Ubuntu 16.04
 
 ## Clone this repository
 
-From your appformix server, run these commands:
+Run these commands to clone this repository:
 ```
 sudo -s
 git clone https://github.com/ksator/appformix_demo_scripts.git 
@@ -15,7 +15,7 @@ git clone https://github.com/ksator/appformix_demo_scripts.git
 
 ## Requirements to use this repository 
 
-Install the python library junos-eznc (also know as PyEZ) and its dependencies. Run these commands on your appformix server:
+Run these commands to install the python library junos-eznc (also know as PyEZ) and its dependencies.
 ```
 sudo -s
 apt-get update
@@ -73,7 +73,7 @@ Then, from your appformix directory, re-run the 'Appformix installation Ansible 
 cd appformix-2.15.2/
 ansible-playbook -i inventory appformix_standalone.yml
 ```
-## Configure the network devices with the SNMP commninity used by Appformix
+## Configure the network devices with the SNMP community used by Appformix
 
 You need to configure the network devices with the SNMP commninity used by Appformix. The script [**configure_snmp.py**](configure_snmp.py) renders the template [**snmp.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**snmp.conf**](snmp.conf). This file is then loaded and commited on all network devices   
 ```
