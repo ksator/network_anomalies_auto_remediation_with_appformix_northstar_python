@@ -4,9 +4,10 @@
 
 This repository has scripts for monitoring network devices with Appformix.  
 It has automation content to: 
-- add network devices to Appformix for monitor
-- configure the network devices with the SNMP commnunity used by Appformix to monitor network devices 
-- Modify on the network devices the IP address configured by Appformix for telemetry 
+- [add network devices to Appformix for monitor](README.md#configure-appformix-to-add-network-devices-to-monitor)
+- [configure the network devices with the SNMP commnunity used by Appformix to monitor network devices](
+README.md#configure-the-network-devices-with-the-snmp-community-used-by-appformix) 
+- [Modify on the network devices the IP address configured by Appformix for telemetry](README.md#network-devices-configuration-for-appformix-monitoring-using-telemetry) 
 
 I am using them with an Appformix standalone setup running version 2.15.2 installed on Ubuntu 16.04
 
