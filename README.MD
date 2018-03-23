@@ -85,9 +85,9 @@ configured device 172.30.52.86 with snmp community public
 more snmp.conf
 ```
 
-## Verify the network devices configuration for Appformix monitoring using telemetry
+## Network devices configuration for Appformix monitoring using telemetry
 
-for JTI monitoring, Appformix should configures the network devices using NETCONF 
+For JTI streaming telemetry, Appformix uses NETCONF to automatically configure the network devices:  
 ```
 lab@jedi-vmx-1-vcp> show system commit
 0   2018-03-22 16:32:37 UTC by lab via netconf
@@ -129,36 +129,9 @@ lab@jedi-vmx-1-vcp> show configuration | compare rollback 2
 lab@jedi-vmx-1-vcp>
 
 ```
-in case appformix has serveral ip addresses, make sure the junos devices are configured with the one you want to use: 
+If Appformix has serveral ip addresses, and you want to configure the network devices to use another IP address for telemetry server, execute this script:
+
 ```
-[edit]
-lab@jedi-vmx-1-vcp# show services analytics | display set
-set services analytics streaming-server appformix-telemetry remote-address 172.30.52.157
-set services analytics streaming-server appformix-telemetry remote-port 42596
-set services analytics export-profile appformix local-address 192.168.1.1
-set services analytics export-profile appformix local-port 21112
-set services analytics export-profile appformix dscp 20
-set services analytics export-profile appformix reporting-rate 60
-set services analytics export-profile appformix format gpb
-set services analytics export-profile appformix transport udp
-set services analytics sensor Interface_Sensor server-name appformix-telemetry
-set services analytics sensor Interface_Sensor export-name appformix
-set services analytics sensor Interface_Sensor resource /junos/system/linecard/interface/
-
-[edit]
-lab@jedi-vmx-1-vcp# set services analytics streaming-server appformix-telemetry remote-address 192.168.1.100
-
-[edit]
-lab@jedi-vmx-1-vcp# show | compare
-[edit services analytics streaming-server appformix-telemetry]
--    remote-address 172.30.52.157;
-+    remote-address 192.168.1.100;
-
-[edit]
-lab@jedi-vmx-1-vcp# commit and-quit
-commit complete
-Exiting configuration mode
-
 ```
 ## Continuous integration with Travis CI
 
