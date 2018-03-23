@@ -2,7 +2,7 @@
 
 ## About this repo
 
-This repository has scripts for monitoring network devices with Appformix.  
+This repository has scripts to quickly demo network devices monitoring using Appformix  
 It has automation content to: 
 - [add network devices to Appformix for monitor](README.MD#configure-appformix-to-add-network-devices-to-monitor)
 - [configure the network devices with the SNMP commnunity used by Appformix to monitor network devices](
