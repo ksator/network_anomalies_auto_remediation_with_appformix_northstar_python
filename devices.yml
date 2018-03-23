@@ -9,6 +9,7 @@ jti:
     telemetry_server_ip: "192.168.1.100"
     devices: 
         - ip: "192.168.1.1"
+          out_of_band: "172.30.52.155"
           name: "jedi-vmx-1-vcp"
           type: "coreswitch"
           version: "17.2R1" 
@@ -22,6 +23,7 @@ jti:
                  remote_interface: "ge-0/0/0"
                  remote_name: "jedi-vmx-2-vcp"
         - ip: "192.168.1.2"
+          out_of_band: "172.30.52.156"
           name: "jedi-vmx-2-vcp"
           type: "coreswitch"
           version: "17.2R1"

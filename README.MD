@@ -132,6 +132,26 @@ lab@jedi-vmx-1-vcp>
 If Appformix has serveral ip addresses, and you want to configure the network devices to use another IP address for telemetry server, execute this script:
 
 ```
+# python telemetry.py
+configured device 172.30.52.155 with telemetry server ip 192.168.1.100
+configured device 172.30.52.156 with telemetry server ip 192.168.1.100
+```
+```
+# more telemetry.conf
+set services analytics streaming-server appformix-telemetry remote-address 192.168.1.100
+```
+```
+lab@jedi-vmx-1-vcp> show configuration services analytics streaming-server appformix-telemetry remote-address
+remote-address 192.168.1.100;
+
+lab@jedi-vmx-1-vcp> show configuration | compare rollback 1
+[edit services analytics streaming-server appformix-telemetry]
+-    remote-address 172.30.52.157;
++    remote-address 192.168.1.100;
+
+lab@jedi-vmx-1-vcp> show system commit
+0   2018-03-23 00:34:47 UTC by lab via netconf
+
 ```
 ## Continuous integration with Travis CI
 

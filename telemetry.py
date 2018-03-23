@@ -16,11 +16,11 @@ f.write(my_template.render(my_vars))
 f.close()
 
 for item in my_vars['jti']['devices']:
-    device=Device (host=item['ip'], user=my_vars['jti']['username'], password=my_vars['jti']['password'])
+    device=Device (host=item['out_of_band'], user=my_vars['jti']['username'], password=my_vars['jti']['password'])
     device.open()
     cfg=Config(device)
     cfg.load(path='telemetry.conf', format='set')
     cfg.commit()
     device.close()
-    print 'configured device ' + item['ip'] + ' with telemetry server ip ' +  my_vars['jti']['telemetry_server_ip']
+    print 'configured device ' + item['out_of_band'] + ' with telemetry server ip ' +  my_vars['jti']['telemetry_server_ip']
 
