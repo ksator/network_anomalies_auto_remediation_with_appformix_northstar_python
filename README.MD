@@ -2,11 +2,11 @@
 
 ## About this repo
 
-This repository has scripts for Appformix with network devices monitoring.  
+This repository has scripts for monitoring network devices with Appformix.  
 It has automation content to: 
-- add to appformix network devices to monitor
+- add network devices to Appformix for monitor
 - configure the network devices with the SNMP commnunity used by Appformix to monitor network devices 
-- configure the network devices to use different IP address than the one configured by appformix on network devices for telemetry server
+- Modify on the network devices the IP address configured by Appformix for telemetry 
 
 I am using them with an Appformix standalone setup running version 2.15.2 installed on Ubuntu 16.04
 
