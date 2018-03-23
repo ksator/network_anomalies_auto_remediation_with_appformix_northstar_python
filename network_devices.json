@@ -44,8 +44,8 @@
             "DeviceLocalPort": 21112,
             "SensorList": [
               {
-                "Name": "Packet_usage",
-                "Resource": "/junos/system/linecard/packet/usage/"
+                "Name": "Interface_Sensor",
+                "Resource": "/junos/system/linecard/interface/"
               }
             ]
           }
