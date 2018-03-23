@@ -14,7 +14,9 @@ install:
 script:
   - python render_devices.py
   - python -m py_compile configure_snmp.py
-  
+  - python -m py_compile telemetry.py
+ 
+ 
 branches:
   only:
    - master
