@@ -169,6 +169,17 @@ lab@jedi-vmx-1-vcp> show system commit
 0   2018-03-23 00:34:47 UTC by lab via netconf
 
 ```
+
+## webhooks
+
+A webhook is notification using an HTTP POST. A webhook is send by a system A to push data (json body as example) to a system B when an event occured in the system A. Then the system B will decide what to do with these details.  
+Appformix supports webhook. A notification is generated when the condition of an alarm is observed. You can configure an alarm to post notifications to an external HTTP endpoint. AppFormix will post a JSON payload to the endpoint for each notification. 
+
+The script [webhook_listener.py](webhook_listener.py) listens to webhook and binds a function to a URL. 
+The script [northstar.py](northstar.py) makes rest calls to Northstar SND controler to put a device in maintenance mode. 
+The script [webhook_listener.py](webhook_listener.py) binds webhooks from appformix (notifications generated when the condition of an alarm is observed) to script [northstar.py](northstar.py).  
+
+
 ## Continuous integration with Travis CI
 
 There is a github webhook with Travis CI  
