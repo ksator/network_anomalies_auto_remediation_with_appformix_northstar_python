@@ -4,3 +4,4 @@ jsnapy
 requests
 ipaddress
 cryptography
+flask
