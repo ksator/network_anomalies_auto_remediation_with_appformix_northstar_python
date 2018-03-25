@@ -8,8 +8,7 @@ It has automation content to:
 - [configure the network devices with the SNMP commnunity used by Appformix to monitor network devices](
 README.MD#configure-the-network-devices-with-the-snmp-community-used-by-appformix) 
 - [Modify on the network devices the IP address configured by Appformix for telemetry](README.MD#network-devices-configuration-for-appformix-monitoring-using-telemetry) 
-- [listen and react to webhooks](webhook_listener.py)
-- [execute rest calls to Northstar SDN controler](northstar.py)
+- [listen and react to webhooks](README.MD#webhooks)  
 
 I am using them with an Appformix standalone setup running version 2.15.2 installed on Ubuntu 16.04
 
@@ -173,11 +172,14 @@ lab@jedi-vmx-1-vcp> show system commit
 ## webhooks
 
 A webhook is notification using an HTTP POST. A webhook is send by a system A to push data (json body as example) to a system B when an event occured in the system A. Then the system B will decide what to do with these details.  
-Appformix supports webhook. A notification is generated when the condition of an alarm is observed. You can configure an alarm to post notifications to an external HTTP endpoint. AppFormix will post a JSON payload to the endpoint for each notification. 
 
-The script [webhook_listener.py](webhook_listener.py) listens to webhook and binds a function to a URL. 
-The script [northstar.py](northstar.py) makes rest calls to Northstar SND controler to put a device in maintenance mode. 
-The script [webhook_listener.py](webhook_listener.py) binds webhooks from appformix (notifications generated when the condition of an alarm is observed) to script [northstar.py](northstar.py).  
+Appformix supports webhook. A notification is generated when the condition of an alarm is observed. You can configure an alarm to post notifications to an external HTTP endpoint. AppFormix will post a JSON payload to the endpoint for each notification.  
+
+The script [**webhook_listener.py**](webhook_listener.py) listens to webhook and binds a function to a URL.  
+
+The script [**northstar.py**](northstar.py) makes rest calls to Northstar SND controler to put a device in maintenance mode.  
+
+The script [**webhook_listener.py**](webhook_listener.py) binds webhooks from appformix (notifications generated when the condition of an alarm is observed) to script [**northstar.py**](northstar.py).  
 
 
 ## Continuous integration with Travis CI
