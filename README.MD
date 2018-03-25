@@ -5,7 +5,7 @@
 This repository has scripts to quickly demo network devices monitoring using Appformix  
 It has automation content to: 
 - [add network devices to Appformix](README.MD#configure-appformix-to-add-network-devices-to-monitor)
-- [configure the network devices with the SNMP community used by Appformix to monitor network devices](
+- [configure the network devices with the SNMP community used by Appformix to monitor them](
 README.MD#configure-the-network-devices-with-the-snmp-community-used-by-appformix) 
 - [Modify on the network devices the IP address configured by Appformix for telemetry](README.MD#network-devices-configuration-for-appformix-monitoring-using-telemetry) 
 - [listen and react to webhooks sent by Appformix](README.MD#webhooks)  
