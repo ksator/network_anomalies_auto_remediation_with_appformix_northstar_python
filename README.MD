@@ -28,8 +28,8 @@ Run these commands to install the python library junos-eznc (also know as PyEZ) 
 sudo -s
 apt-get update
 apt-get upgrade
-apt-get install -y python-dev libxml2-dev python-pip libxslt1-dev build-essential libssl-dev libffi-dev git
-pip install junos-eznc wget requests ipaddress cryptography 
+apt-get install -y python-dev libxml2-dev python-pip libxslt1-dev build-essential libssl-dev libffi-dev git curl
+pip install junos-eznc wget requests ipaddress cryptography flask
 ```
 
 ## Configure Appformix to add network devices to monitor
