@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, abort, make_response, request
-import northstar
+import northstar_rest_calls
 
 app = Flask(__name__)
 
@@ -9,7 +9,7 @@ def node_in_maintenance():
         abort(400, message="Expected Content-Type = application/json")
  data = request.json
  dev = data["device"]
- northstar.put_device_in_maintenance(dev)
+ northstar_rest_calls.put_device_in_maintenance(dev)
  return jsonify({'device in maintenance ': dev}), 201
 
 app.run(

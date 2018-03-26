@@ -16,7 +16,7 @@ script:
   - python -m py_compile configure_snmp.py
   - python -m py_compile telemetry.py
   - python webhook_listener.py
-  - python -m py_compile northstar.py
+  - python -m py_compile northstar_rest_calls.py
   - python -m py_compile git.py
   
 
