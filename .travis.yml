@@ -17,6 +17,8 @@ script:
   - python -m py_compile telemetry.py
   - python webhook_listener.py
   - python -m py_compile northstar.py
+  - python -m py_compile git.py
+  
 
 
 branches:
