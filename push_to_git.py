@@ -1,3 +1,5 @@
+
+
 import git
 import os
 import junos_devices
@@ -8,7 +10,8 @@ cwd = os.getcwd()
 repo = git.Repo(cwd)
 # print repo.git.status()
 
-repo.git.pull
+repo.git.pull('origin', 'master')
+
 
 junos_devices.collect_junos_commands(dev)
 
@@ -26,5 +29,7 @@ print repo.git.add(".")
 repo.git.commit(m = "from Gitpython")
 # print repo.git.status()
 # print repo.git.push()
-repo.git.push()
+repo.git.push('origin', 'master')
+
+
 

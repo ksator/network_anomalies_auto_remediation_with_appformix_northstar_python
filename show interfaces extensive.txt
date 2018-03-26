@@ -14,13 +14,13 @@ Physical interface: ge-0/0/0, Enabled, Physical link is Up
   Hold-times     : Up 0 ms, Down 0 ms
   Damping        : half-life: 0 sec, max-suppress: 0 sec, reuse: 0, suppress: 0, state: unsuppressed
   Current address: 00:50:56:83:b2:a7, Hardware address: 00:50:56:83:b2:a7
-  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:11 ago)
+  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:14 ago)
   Statistics last cleared: Never
   Traffic statistics:
-   Input  bytes  :             90399766                    0 bps
-   Output bytes  :            101026507                  280 bps
-   Input  packets:               701045                    0 pps
-   Output packets:               701058                    0 pps
+   Input  bytes  :             90402118                 1048 bps
+   Output bytes  :            101028788                    0 bps
+   Input  packets:               701063                    0 pps
+   Output packets:               701074                    0 pps
    IPv6 transit statistics:
     Input  bytes  :                   0
     Output bytes  :                   0
@@ -49,9 +49,9 @@ Physical interface: ge-0/0/0, Enabled, Physical link is Up
     FEC Corrected Errors Rate               0
     FEC Uncorrected Errors Rate             0
   MAC statistics:                      Receive         Transmit
-    Total octets                      99747632         96923199
-    Total packets                       701049           701058
-    Unicast packets                     701048           701056
+    Total octets                      99749951         96925719
+    Total packets                       701066           701074
+    Unicast packets                     701065           701074
     Broadcast packets                        0                0
     Multicast packets                        0                0
     CRC/Align errors                         0                0
@@ -65,11 +65,11 @@ Physical interface: ge-0/0/0, Enabled, Physical link is Up
     Code violations                          0
     Total errors                             0                0
   Filter statistics:
-    Input packet count                  701048
+    Input packet count                  701065
     Input packet rejects                    10
     Input DA rejects                         0
     Input SA rejects                         0
-    Output packet count                                  701056
+    Output packet count                                  701074
     Output packet pad count                                   0
     Output packet error count                                 0
     CAM destination filters: 0, CAM source filters: 0
@@ -88,15 +88,15 @@ Physical interface: ge-0/0/0, Enabled, Physical link is Up
   Logical interface ge-0/0/0.0 (Index 333) (SNMP ifIndex 529) (Generation 142)
     Flags: Up SNMP-Traps 0x4004000 Encapsulation: ENET2
     Traffic statistics:
-     Input  bytes  :             90400177
-     Output bytes  :            110543509
-     Input  packets:               701048
-     Output packets:               701058
+     Input  bytes  :             90402458
+     Output bytes  :            110545994
+     Input  packets:               701065
+     Output packets:               701074
     Local statistics:
-     Input  bytes  :             90399377
-     Output bytes  :            110543509
-     Input  packets:               701036
-     Output packets:               701058
+     Input  bytes  :             90401658
+     Output bytes  :            110545994
+     Input  packets:               701053
+     Output packets:               701074
     Transit statistics:
      Input  bytes  :                  800                    0 bps
      Output bytes  :                    0                    0 bps
@@ -334,7 +334,7 @@ Physical interface: ge-0/0/1, Enabled, Physical link is Down
   Hold-times     : Up 0 ms, Down 0 ms
   Damping        : half-life: 0 sec, max-suppress: 0 sec, reuse: 0, suppress: 0, state: unsuppressed
   Current address: 2c:6b:f5:39:0e:01, Hardware address: 2c:6b:f5:39:0e:01
-  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:11 ago)
+  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:14 ago)
   Statistics last cleared: Never
   Traffic statistics:
    Input  bytes  :                    0                    0 bps
@@ -369,9 +369,9 @@ Physical interface: ge-0/0/1, Enabled, Physical link is Down
     FEC Corrected Errors Rate               0
     FEC Uncorrected Errors Rate             0
   MAC statistics:                      Receive         Transmit
-    Total octets                      99747632         96923199
+    Total octets                      99749951         96925719
     Total packets                            0                0
-    Unicast packets                     701048           701056
+    Unicast packets                     701065           701074
     Broadcast packets                        0                0
     Multicast packets                        0                0
     CRC/Align errors                         0                0
@@ -385,11 +385,11 @@ Physical interface: ge-0/0/1, Enabled, Physical link is Down
     Code violations                          0
     Total errors                             0                0
   Filter statistics:
-    Input packet count                  701048
+    Input packet count                  701065
     Input packet rejects                     0
     Input DA rejects                         0
     Input SA rejects                         0
-    Output packet count                                  701056
+    Output packet count                                  701074
     Output packet pad count                                   0
     Output packet error count                                 0
     CAM destination filters: 0, CAM source filters: 0
@@ -445,7 +445,7 @@ Physical interface: ge-0/0/2, Enabled, Physical link is Down
   Hold-times     : Up 0 ms, Down 0 ms
   Damping        : half-life: 0 sec, max-suppress: 0 sec, reuse: 0, suppress: 0, state: unsuppressed
   Current address: 2c:6b:f5:39:0e:02, Hardware address: 2c:6b:f5:39:0e:02
-  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:11 ago)
+  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:14 ago)
   Statistics last cleared: Never
   Traffic statistics:
    Input  bytes  :                    0                    0 bps
@@ -480,9 +480,9 @@ Physical interface: ge-0/0/2, Enabled, Physical link is Down
     FEC Corrected Errors Rate               0
     FEC Uncorrected Errors Rate             0
   MAC statistics:                      Receive         Transmit
-    Total octets                      99747632         96923199
+    Total octets                      99749951         96925719
     Total packets                            0                0
-    Unicast packets                     701048           701056
+    Unicast packets                     701065           701074
     Broadcast packets                        0                0
     Multicast packets                        0                0
     CRC/Align errors                         0                0
@@ -496,11 +496,11 @@ Physical interface: ge-0/0/2, Enabled, Physical link is Down
     Code violations                          0
     Total errors                             0                0
   Filter statistics:
-    Input packet count                  701048
+    Input packet count                  701065
     Input packet rejects                     0
     Input DA rejects                         0
     Input SA rejects                         0
-    Output packet count                                  701056
+    Output packet count                                  701074
     Output packet pad count                                   0
     Output packet error count                                 0
     CAM destination filters: 0, CAM source filters: 0
@@ -531,7 +531,7 @@ Physical interface: ge-0/0/3, Enabled, Physical link is Down
   Hold-times     : Up 0 ms, Down 0 ms
   Damping        : half-life: 0 sec, max-suppress: 0 sec, reuse: 0, suppress: 0, state: unsuppressed
   Current address: 2c:6b:f5:39:0e:03, Hardware address: 2c:6b:f5:39:0e:03
-  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:11 ago)
+  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:14 ago)
   Statistics last cleared: Never
   Traffic statistics:
    Input  bytes  :                    0                    0 bps
@@ -566,9 +566,9 @@ Physical interface: ge-0/0/3, Enabled, Physical link is Down
     FEC Corrected Errors Rate               0
     FEC Uncorrected Errors Rate             0
   MAC statistics:                      Receive         Transmit
-    Total octets                      99747632         96923199
+    Total octets                      99749951         96925719
     Total packets                            0                0
-    Unicast packets                     701048           701056
+    Unicast packets                     701065           701074
     Broadcast packets                        0                0
     Multicast packets                        0                0
     CRC/Align errors                         0                0
@@ -582,11 +582,11 @@ Physical interface: ge-0/0/3, Enabled, Physical link is Down
     Code violations                          0
     Total errors                             0                0
   Filter statistics:
-    Input packet count                  701048
+    Input packet count                  701065
     Input packet rejects                     0
     Input DA rejects                         0
     Input SA rejects                         0
-    Output packet count                                  701056
+    Output packet count                                  701074
     Output packet pad count                                   0
     Output packet error count                                 0
     CAM destination filters: 0, CAM source filters: 0
@@ -617,7 +617,7 @@ Physical interface: ge-0/0/4, Enabled, Physical link is Down
   Hold-times     : Up 0 ms, Down 0 ms
   Damping        : half-life: 0 sec, max-suppress: 0 sec, reuse: 0, suppress: 0, state: unsuppressed
   Current address: 2c:6b:f5:39:0e:04, Hardware address: 2c:6b:f5:39:0e:04
-  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:11 ago)
+  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:14 ago)
   Statistics last cleared: Never
   Traffic statistics:
    Input  bytes  :                    0                    0 bps
@@ -652,9 +652,9 @@ Physical interface: ge-0/0/4, Enabled, Physical link is Down
     FEC Corrected Errors Rate               0
     FEC Uncorrected Errors Rate             0
   MAC statistics:                      Receive         Transmit
-    Total octets                      99747632         96923199
+    Total octets                      99749951         96925719
     Total packets                            0                0
-    Unicast packets                     701048           701056
+    Unicast packets                     701065           701074
     Broadcast packets                        0                0
     Multicast packets                        0                0
     CRC/Align errors                         0                0
@@ -668,11 +668,11 @@ Physical interface: ge-0/0/4, Enabled, Physical link is Down
     Code violations                          0
     Total errors                             0                0
   Filter statistics:
-    Input packet count                  701048
+    Input packet count                  701065
     Input packet rejects                     0
     Input DA rejects                         0
     Input SA rejects                         0
-    Output packet count                                  701056
+    Output packet count                                  701074
     Output packet pad count                                   0
     Output packet error count                                 0
     CAM destination filters: 0, CAM source filters: 0
@@ -703,7 +703,7 @@ Physical interface: ge-0/0/5, Enabled, Physical link is Down
   Hold-times     : Up 0 ms, Down 0 ms
   Damping        : half-life: 0 sec, max-suppress: 0 sec, reuse: 0, suppress: 0, state: unsuppressed
   Current address: 2c:6b:f5:39:0e:05, Hardware address: 2c:6b:f5:39:0e:05
-  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:12 ago)
+  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:14 ago)
   Statistics last cleared: Never
   Traffic statistics:
    Input  bytes  :                    0                    0 bps
@@ -738,9 +738,9 @@ Physical interface: ge-0/0/5, Enabled, Physical link is Down
     FEC Corrected Errors Rate               0
     FEC Uncorrected Errors Rate             0
   MAC statistics:                      Receive         Transmit
-    Total octets                      99747632         96923199
+    Total octets                      99749951         96925719
     Total packets                            0                0
-    Unicast packets                     701048           701056
+    Unicast packets                     701065           701074
     Broadcast packets                        0                0
     Multicast packets                        0                0
     CRC/Align errors                         0                0
@@ -754,11 +754,11 @@ Physical interface: ge-0/0/5, Enabled, Physical link is Down
     Code violations                          0
     Total errors                             0                0
   Filter statistics:
-    Input packet count                  701048
+    Input packet count                  701065
     Input packet rejects                     0
     Input DA rejects                         0
     Input SA rejects                         0
-    Output packet count                                  701056
+    Output packet count                                  701074
     Output packet pad count                                   0
     Output packet error count                                 0
     CAM destination filters: 0, CAM source filters: 0
@@ -789,7 +789,7 @@ Physical interface: ge-0/0/6, Enabled, Physical link is Down
   Hold-times     : Up 0 ms, Down 0 ms
   Damping        : half-life: 0 sec, max-suppress: 0 sec, reuse: 0, suppress: 0, state: unsuppressed
   Current address: 2c:6b:f5:39:0e:06, Hardware address: 2c:6b:f5:39:0e:06
-  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:12 ago)
+  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:14 ago)
   Statistics last cleared: Never
   Traffic statistics:
    Input  bytes  :                    0                    0 bps
@@ -824,9 +824,9 @@ Physical interface: ge-0/0/6, Enabled, Physical link is Down
     FEC Corrected Errors Rate               0
     FEC Uncorrected Errors Rate             0
   MAC statistics:                      Receive         Transmit
-    Total octets                      99747721         96923534
+    Total octets                      99749951         96925719
     Total packets                            0                0
-    Unicast packets                     701049           701058
+    Unicast packets                     701065           701074
     Broadcast packets                        0                0
     Multicast packets                        0                0
     CRC/Align errors                         0                0
@@ -840,11 +840,11 @@ Physical interface: ge-0/0/6, Enabled, Physical link is Down
     Code violations                          0
     Total errors                             0                0
   Filter statistics:
-    Input packet count                  701049
+    Input packet count                  701065
     Input packet rejects                     0
     Input DA rejects                         0
     Input SA rejects                         0
-    Output packet count                                  701058
+    Output packet count                                  701074
     Output packet pad count                                   0
     Output packet error count                                 0
     CAM destination filters: 0, CAM source filters: 0
@@ -875,7 +875,7 @@ Physical interface: ge-0/0/7, Enabled, Physical link is Down
   Hold-times     : Up 0 ms, Down 0 ms
   Damping        : half-life: 0 sec, max-suppress: 0 sec, reuse: 0, suppress: 0, state: unsuppressed
   Current address: 2c:6b:f5:39:0e:07, Hardware address: 2c:6b:f5:39:0e:07
-  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:12 ago)
+  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:14 ago)
   Statistics last cleared: Never
   Traffic statistics:
    Input  bytes  :                    0                    0 bps
@@ -910,9 +910,9 @@ Physical interface: ge-0/0/7, Enabled, Physical link is Down
     FEC Corrected Errors Rate               0
     FEC Uncorrected Errors Rate             0
   MAC statistics:                      Receive         Transmit
-    Total octets                      99747721         96923534
+    Total octets                      99749951         96925719
     Total packets                            0                0
-    Unicast packets                     701049           701058
+    Unicast packets                     701065           701074
     Broadcast packets                        0                0
     Multicast packets                        0                0
     CRC/Align errors                         0                0
@@ -926,11 +926,11 @@ Physical interface: ge-0/0/7, Enabled, Physical link is Down
     Code violations                          0
     Total errors                             0                0
   Filter statistics:
-    Input packet count                  701049
+    Input packet count                  701065
     Input packet rejects                     0
     Input DA rejects                         0
     Input SA rejects                         0
-    Output packet count                                  701058
+    Output packet count                                  701074
     Output packet pad count                                   0
     Output packet error count                                 0
     CAM destination filters: 0, CAM source filters: 0
@@ -961,7 +961,7 @@ Physical interface: ge-0/0/8, Enabled, Physical link is Down
   Hold-times     : Up 0 ms, Down 0 ms
   Damping        : half-life: 0 sec, max-suppress: 0 sec, reuse: 0, suppress: 0, state: unsuppressed
   Current address: 2c:6b:f5:39:0e:08, Hardware address: 2c:6b:f5:39:0e:08
-  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:12 ago)
+  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:14 ago)
   Statistics last cleared: Never
   Traffic statistics:
    Input  bytes  :                    0                    0 bps
@@ -996,9 +996,9 @@ Physical interface: ge-0/0/8, Enabled, Physical link is Down
     FEC Corrected Errors Rate               0
     FEC Uncorrected Errors Rate             0
   MAC statistics:                      Receive         Transmit
-    Total octets                      99747721         96923534
+    Total octets                      99749951         96925719
     Total packets                            0                0
-    Unicast packets                     701049           701058
+    Unicast packets                     701065           701074
     Broadcast packets                        0                0
     Multicast packets                        0                0
     CRC/Align errors                         0                0
@@ -1012,11 +1012,11 @@ Physical interface: ge-0/0/8, Enabled, Physical link is Down
     Code violations                          0
     Total errors                             0                0
   Filter statistics:
-    Input packet count                  701049
+    Input packet count                  701065
     Input packet rejects                     0
     Input DA rejects                         0
     Input SA rejects                         0
-    Output packet count                                  701058
+    Output packet count                                  701074
     Output packet pad count                                   0
     Output packet error count                                 0
     CAM destination filters: 0, CAM source filters: 0
@@ -1047,7 +1047,7 @@ Physical interface: ge-0/0/9, Enabled, Physical link is Down
   Hold-times     : Up 0 ms, Down 0 ms
   Damping        : half-life: 0 sec, max-suppress: 0 sec, reuse: 0, suppress: 0, state: unsuppressed
   Current address: 2c:6b:f5:39:0e:09, Hardware address: 2c:6b:f5:39:0e:09
-  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:12 ago)
+  Last flapped   : 2018-01-12 08:10:59 UTC (10w3d 04:14 ago)
   Statistics last cleared: Never
   Traffic statistics:
    Input  bytes  :                    0                    0 bps
@@ -1082,9 +1082,9 @@ Physical interface: ge-0/0/9, Enabled, Physical link is Down
     FEC Corrected Errors Rate               0
     FEC Uncorrected Errors Rate             0
   MAC statistics:                      Receive         Transmit
-    Total octets                      99747721         96923534
+    Total octets                      99749951         96925719
     Total packets                            0                0
-    Unicast packets                     701049           701058
+    Unicast packets                     701065           701074
     Broadcast packets                        0                0
     Multicast packets                        0                0
     CRC/Align errors                         0                0
@@ -1098,11 +1098,11 @@ Physical interface: ge-0/0/9, Enabled, Physical link is Down
     Code violations                          0
     Total errors                             0                0
   Filter statistics:
-    Input packet count                  701049
+    Input packet count                  701065
     Input packet rejects                     0
     Input DA rejects                         0
     Input SA rejects                         0
-    Output packet count                                  701058
+    Output packet count                                  701074
     Output packet pad count                                   0
     Output packet error count                                 0
     CAM destination filters: 0, CAM source filters: 0
@@ -1406,13 +1406,13 @@ Physical interface: em1, Enabled, Physical link is Up
   Damping        : half-life: 0 sec, max-suppress: 0 sec, reuse: 0, suppress: 0, state: unsuppressed
   Current address: 00:50:56:83:3e:e5, Hardware address: 00:50:56:83:3e:e5
   Alternate link address: Unspecified
-  Last flapped   : 2018-01-12 08:09:08 UTC (10w3d 04:13 ago)
+  Last flapped   : 2018-01-12 08:09:08 UTC (10w3d 04:16 ago)
   Statistics last cleared: Never
   Traffic statistics:
-   Input  bytes  :          30021202311
-   Output bytes  :           9120363781
-   Input  packets:            159142719
-   Output packets:            143122170
+   Input  bytes  :          30022078004
+   Output bytes  :           9120565807
+   Input  packets:            159146428
+   Output packets:            143125368
    IPv6 transit statistics:
     Input  bytes  :                   0
     Output bytes  :                   0
@@ -1428,20 +1428,20 @@ Physical interface: em1, Enabled, Physical link is Up
   Logical interface em1.0 (Index 3) (SNMP ifIndex 24) (Generation 2)
     Flags: Up SNMP-Traps 0x4004000 Encapsulation: ENET2
     Traffic statistics:
-     Input  bytes  :          30021202311
-     Output bytes  :           9031871895
-     Input  packets:            159142719
-     Output packets:            143122170
+     Input  bytes  :          30022078004
+     Output bytes  :           9032071975
+     Input  packets:            159146428
+     Output packets:            143125368
      IPv6 transit statistics:
       Input  bytes  :                   0
       Output bytes  :                   0
       Input  packets:                   0
       Output packets:                   0
     Local statistics:
-     Input  bytes  :          30021202311
-     Output bytes  :           9031871895
-     Input  packets:            159142719
-     Output packets:            143122170
+     Input  bytes  :          30022078004
+     Output bytes  :           9032071975
+     Input  packets:            159146428
+     Output packets:            143125368
     Protocol inet, MTU: 1500
     Max nh cache: 75000, New hold nh limit: 75000, Curr nh cnt: 1,
     Curr new hold cnt: 0, NH drop cnt: 0
@@ -1517,13 +1517,13 @@ Physical interface: fxp0, Enabled, Physical link is Up
   Damping        : half-life: 0 sec, max-suppress: 0 sec, reuse: 0, suppress: 0, state: unsuppressed
   Current address: 00:50:56:83:be:2a, Hardware address: 00:50:56:83:be:2a
   Alternate link address: Unspecified
-  Last flapped   : 2018-01-12 08:09:08 UTC (10w3d 04:13 ago)
+  Last flapped   : 2018-01-12 08:09:08 UTC (10w3d 04:16 ago)
   Statistics last cleared: Never
   Traffic statistics:
-   Input  bytes  :           5669119867
-   Output bytes  :            247007987
-   Input  packets:             90669792
-   Output packets:               976243
+   Input  bytes  :           5669266024
+   Output bytes  :            247198535
+   Input  packets:             90672101
+   Output packets:               976538
    IPv6 transit statistics:
     Input  bytes  :                   0
     Output bytes  :                   0
@@ -1539,15 +1539,15 @@ Physical interface: fxp0, Enabled, Physical link is Up
   Logical interface fxp0.0 (Index 4) (SNMP ifIndex 13) (Generation 3)
     Flags: Up SNMP-Traps 0x4004000 Encapsulation: ENET2
     Traffic statistics:
-     Input  bytes  :           5669032225
-     Output bytes  :            247007987
-     Input  packets:             90668360
-     Output packets:               976243
+     Input  bytes  :           5669178382
+     Output bytes  :            247198535
+     Input  packets:             90670669
+     Output packets:               976538
     Local statistics:
-     Input  bytes  :           5669032225
-     Output bytes  :            247007987
-     Input  packets:             90668360
-     Output packets:               976243
+     Input  bytes  :           5669178382
+     Output bytes  :            247198535
+     Input  packets:             90670669
+     Output packets:               976538
     Protocol inet, MTU: 1500
     Max nh cache: 75000, New hold nh limit: 75000, Curr nh cnt: 6,
     Curr new hold cnt: 0, NH drop cnt: 0
@@ -1700,10 +1700,10 @@ Physical interface: lo0, Enabled, Physical link is Up
   Last flapped   : Never
   Statistics last cleared: Never
   Traffic statistics:
-   Input  bytes  :          66859277425
-   Output bytes  :          66859277425
-   Input  packets:             39819314
-   Output packets:             39819314
+   Input  bytes  :          66861247861
+   Output bytes  :          66861247861
+   Input  packets:             39820490
+   Output packets:             39820490
    IPv6 transit statistics:
     Input  bytes  :                   0
     Output bytes  :                   0
@@ -1770,15 +1770,15 @@ Physical interface: lo0, Enabled, Physical link is Up
   Logical interface lo0.16385 (Index 321) (SNMP ifIndex 22) (Generation 130)
     Flags: SNMP-Traps Encapsulation: Unspecified
     Traffic statistics:
-     Input  bytes  :          66859275841
-     Output bytes  :          66859275841
-     Input  packets:             39819304
-     Output packets:             39819304
+     Input  bytes  :          66861246277
+     Output bytes  :          66861246277
+     Input  packets:             39820480
+     Output packets:             39820480
     Local statistics:
-     Input  bytes  :          66859275841
-     Output bytes  :          66859275841
-     Input  packets:             39819304
-     Output packets:             39819304
+     Input  bytes  :          66861246277
+     Output bytes  :          66861246277
+     Input  packets:             39820480
+     Output packets:             39820480
     Transit statistics:
      Input  bytes  :                    0                    0 bps
      Output bytes  :                    0                    0 bps
