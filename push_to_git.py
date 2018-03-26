@@ -8,7 +8,7 @@ cwd = os.getcwd()
 repo = git.Repo(cwd)
 # print repo.git.status()
 
-repo.git.pull()
+repo.git.pull
 
 junos_devices.collect_junos_commands(dev)
 
