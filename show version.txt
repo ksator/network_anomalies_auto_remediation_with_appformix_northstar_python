@@ -1,5 +1,5 @@
 
-Hostname: dc-vmx-3
+Hostname: dc-vmx-1
 Model: vmx
 Junos: 17.4R1.16
 JUNOS OS Kernel 64-bit  [20171206.f4cad52_builder_stable_11]
@@ -21,7 +21,7 @@ JUNOS na telemetry [17.4R1.16-C1]
 JUNOS mx libs compat32 [20171219.172921_builder_junos_174_r1]
 JUNOS mx runtime [20171219.172921_builder_junos_174_r1]
 JUNOS common platform support [20171219.172921_builder_junos_174_r1]
-JUNOS Openconfig [0.0.0.8]
+JUNOS Openconfig [0.0.0.9]
 JUNOS mtx network modules [20171219.172921_builder_junos_174_r1]
 JUNOS modules [20171219.172921_builder_junos_174_r1]
 JUNOS mx modules [20171219.172921_builder_junos_174_r1]
