@@ -179,11 +179,11 @@ A webhook is notification using an HTTP POST. A webhook is send by a system A to
 Appformix supports webhook. A notification is generated when the condition of an alarm is observed. You can configure an alarm to post notifications to an external HTTP endpoint. AppFormix will post a JSON payload to the endpoint for each notification.  
 
 The script [**northstar_rest_calls.py**](northstar_rest_calls.py) makes rest calls to Northstar SND controler to put a device in maintenance mode.  
-The script [**push_to_git**](push_to_git) collects data on junos devices (junos show commands output) and upload the data to a GIT server.  
+The script [**push_to_git.py**](push_to_git.py) collects data on junos devices (junos show commands output) and upload the data to a GIT server.  
 
 The script [**webhook_listener.py**](webhook_listener.py) listens to webhooks and binds a function to a URL:   
 - It binds a webhook from appformix (notifications generated when the condition of an alarm is observed) to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
-- It binds a webhook from appformix (notifications generated when the condition of an alarm is observed) to the script [**push_to_git**](push_to_git).   
+- It binds a webhook from appformix (notifications generated when the condition of an alarm is observed) to the script [**push_to_git.py**](push_to_git.py).   
 
 ## Continuous integration with Travis CI
 
