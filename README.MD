@@ -4,16 +4,15 @@
 
 This repository has scripts to quickly demo network devices monitoring using Appformix  
 It has automation content to: 
-- [add network devices to Appformix](README.MD#configure-appformix-to-add-network-devices-to-monitor)
-- [configure the network devices with the SNMP community used by Appformix to monitor them](
+- [Add network devices to Appformix](README.MD#configure-appformix-to-add-network-devices-to-monitor)
+- [Configure the network devices with the SNMP community used by Appformix to monitor them](
 README.MD#configure-the-network-devices-with-the-snmp-community-used-by-appformix) 
 - [Modify on the network devices the IP address configured by Appformix for telemetry](README.MD#network-devices-configuration-for-appformix-monitoring-using-telemetry) 
-- [listen and react to webhooks notifications sent by Appformix](README.MD#webhooks)  
-  - the actions triggered are python scripts to: 
-      - automated data collection (junos show commands) on the "faulty" device
-      - rest calls to Northstar SDN controler to put the faulty device in maintenance mode
+- [Listen webhooks notifications sent by Appformix, and react to them](README.MD#webhooks)  
+  - The actions triggered are python scripts to: 
+      - collect automatically data on the "faulty" device (junos show commands) and upload them on a GIT server 
+      - make REST calls to Northstar SDN controler to put the faulty device in maintenance mode
   
-
 I am using them with an Appformix standalone setup running version 2.15.2 installed on Ubuntu 16.04
 
 
@@ -179,12 +178,12 @@ A webhook is notification using an HTTP POST. A webhook is send by a system A to
 
 Appformix supports webhook. A notification is generated when the condition of an alarm is observed. You can configure an alarm to post notifications to an external HTTP endpoint. AppFormix will post a JSON payload to the endpoint for each notification.  
 
-The script [**webhook_listener.py**](webhook_listener.py) listens to webhook and binds a function to a URL.  
+The script [**northstar_rest_calls.py**](northstar_rest_calls.py) makes rest calls to Northstar SND controler to put a device in maintenance mode.  
+The script [**push_to_git**](push_to_git) collects data on junos devices (junos show commands output) and upload the data to a GIT server.  
 
-The script [**northstar.py**](northstar.py) makes rest calls to Northstar SND controler to put a device in maintenance mode.  
-
-The script [**webhook_listener.py**](webhook_listener.py) binds webhooks from appformix (notifications generated when the condition of an alarm is observed) to script [**northstar.py**](northstar.py).  
-
+The script [**webhook_listener.py**](webhook_listener.py) listens to webhooks and binds a function to a URL:   
+- It binds a webhook from appformix (notifications generated when the condition of an alarm is observed) to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
+- It binds a webhook from appformix (notifications generated when the condition of an alarm is observed) to the script [**push_to_git**](push_to_git).   
 
 ## Continuous integration with Travis CI
 
