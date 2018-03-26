@@ -29,7 +29,7 @@ sudo -s
 apt-get update
 apt-get upgrade
 apt-get install -y python-dev libxml2-dev python-pip libxslt1-dev build-essential libssl-dev libffi-dev git curl
-pip install junos-eznc wget requests ipaddress cryptography flask
+pip install junos-eznc wget requests ipaddress cryptography flask Gitpython
 ```
 
 ## Configure Appformix to add network devices to monitor
