@@ -9,7 +9,7 @@ It has automation content to:
 README.MD#configure-the-network-devices-with-the-snmp-community-used-by-appformix) 
 - [Modify on the network devices the IP address configured by Appformix for telemetry](README.MD#network-devices-configuration-for-appformix-monitoring-using-telemetry) 
 - [listen and react to webhooks notifications sent by Appformix](README.MD#webhooks)  
-  - the actions triggers are python scripts to: 
+  - the actions triggered are python scripts to: 
       - automated data collection (junos show commands) on the "faulty" device
       - rest calls to Northstar SDN controler to put the faulty device in maintenance mode
   
