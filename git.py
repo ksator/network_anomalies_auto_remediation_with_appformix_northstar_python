@@ -1,6 +1,6 @@
 import git
 import os
-from junos import collect_junos_commands
+import junos
 
 dev='172.30.52.152'
 
@@ -10,7 +10,7 @@ repo = git.Repo(cwd)
 
 repo.git.pull()
 
-collect_junos_commands(dev)
+junos.collect_junos_commands(dev)
 
 # f=open(cwd + '/test.md', 'w')
 # f.write("blabla")
