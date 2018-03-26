@@ -17,8 +17,8 @@ script:
   - python -m py_compile telemetry.py
   - python webhook_listener.py
   - python -m py_compile northstar_rest_calls.py
-  - python -m py_compile git.py
-  
+  - python -m py_compile push_to_git.py
+  - python -m py_compile junos_devices.py
 
 
 branches:
