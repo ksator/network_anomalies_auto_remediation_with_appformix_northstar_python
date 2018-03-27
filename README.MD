@@ -8,7 +8,7 @@
 [**Configure the network devices with the SNMP community used by Appformix**](README.MD#configure-the-network-devices-with-the-snmp-community-used-by-appformix)  
 [**Network devices configuration for Appformix monitoring using telemetry**](README.MD#network-devices-configuration-for-appformix-monitoring-using-telemetry)  
 [**webhooks**](README.MD#webhooks)  
-[**Event driven automation in this repository**](README.MD#event-driven-automation-in-this-repository)  
+[**Event driven automation**](README.MD#event-driven-automation)  
 [**Continuous integration with Travis CI**](README.MD#continuous-integration-with-travis-ci)  
 [**Looking for more automation solutions**](README.MD#looking-for-more-automation-solutions)  
 
@@ -200,7 +200,7 @@ A webhook is notification using an HTTP POST. A webhook is send by a system A to
 
 Appformix supports webhooks. A notification is generated when the condition of an alarm is observed. You can configure an alarm to post notifications to an external HTTP endpoint. AppFormix will post a JSON payload to the endpoint for each notification.  
 
-## Event driven automation in this repository 
+## Event driven automation
 
 The script [**webhook_listener.py**](webhook_listener.py) listens to webhooks and binds a function to each URL.   
 - It binds the webhook http://x.x.x.x:12345/northstar/put_device_in_maintenance (POST with JSON Body) sent by appformix to the script [**northstar_rest_calls.py**](northstar_rest_calls.py). The script [**webhook_listener.py**](webhook_listener.py) extracts the device name from the JSON body and pass it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py). The script [**northstar_rest_calls.py**](northstar_rest_calls.py) then makes rest calls to Northstar SDN controler to put this device in maintenance mode. During a maintenance event, the selected devices are considered logically down, and the system reroutes the LSPs around those devices during the maintenance period. After the maintenance event is completed, delegated and PCE-initiated LSPs are reverted back to optimal paths.  
