@@ -8,13 +8,15 @@
 [**Configure the network devices with the SNMP community used by Appformix**](README.MD#configure-the-network-devices-with-the-snmp-community-used-by-appformix)  
 [**Network devices configuration for Appformix monitoring using telemetry**](README.MD#network-devices-configuration-for-appformix-monitoring-using-telemetry)  
 [**webhooks**](README.MD#webhooks)  
-[**Events driven automation in this repository**](README.MD#events-driven-automation-in-this-repository)  
+[**Event driven automation in this repository**](README.MD#event-driven-automation-in-this-repository)  
 [**Continuous integration with Travis CI**](README.MD#continuous-integration-with-travis-ci)  
 [**Looking for more automation solutions**](README.MD#looking-for-more-automation-solutions)  
 
 ## About this repo
 
-This repository has scripts to quickly demo network devices monitoring using Appformix. It has also scripts to demo events driven automation using Appformix: 
+This repository has scripts to quickly demo network devices monitoring using Appformix.  
+It has also scripts to demo event driven automation leveraging Appformix. 
+It has automation content to: 
 - Add network devices to Appformix
 - Configure the network devices with the SNMP community used by Appformix to monitor them
 - Modify on the network devices the IP address configured by Appformix for telemetry
@@ -193,7 +195,7 @@ A webhook is notification using an HTTP POST. A webhook is send by a system A to
 
 Appformix supports webhooks. A notification is generated when the condition of an alarm is observed. You can configure an alarm to post notifications to an external HTTP endpoint. AppFormix will post a JSON payload to the endpoint for each notification.  
 
-## Events driven automation in this repository 
+## Event driven automation in this repository 
 
 The script [**webhook_listener.py**](webhook_listener.py) listens to webhooks and binds a function to each URL.   
 - It binds the webhook http://x.x.x.x:12345/northstar/put_device_in_maintenance (POST with JSON Body) sent by appformix to the script [**northstar_rest_calls.py**](northstar_rest_calls.py). The script [**webhook_listener.py**](webhook_listener.py) extracts the device name from the JSON body and pass it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py). The script [**northstar_rest_calls.py**](northstar_rest_calls.py) then makes rest calls to Northstar SDN controler to put this device in maintenance mode. During a maintenance event, the selected devices are considered logically down, and the system reroutes the LSPs around those devices during the maintenance period. After the maintenance event is completed, delegated and PCE-initiated LSPs are reverted back to optimal paths.  
@@ -224,11 +226,12 @@ Here's the output of [**webhook_listener.py**](webhook_listener.py) for the webh
 172.18.0.5 - - [27/Mar/2018 13:11:30] "POST /junos/collect_data HTTP/1.1" 201 -
 ```
 the script [**push_to_git.py**](push_to_git.py) runs on this device (the one notified by Appformix) junos show commands, collects the output, and push it to a Git server.   
-On the local repository (local copy of the remote repository):  
+The data is collected and saved the local repository (local copy of the remote repository):  
 ```
 # ls vmx104/
 show chassis hardware.txt  show interfaces extensive.txt  show version.txt
 ```
+And then pushed on the remote repository:  
 ```
 # git log -1
 commit 38f0162a8d45419a3390d0805e43d7fe6dad4aa4
@@ -237,7 +240,7 @@ Date:   Tue Mar 27 13:11:16 2018 -0700
 
     from Gitpython
 ```
-On the remote repository:  
+So the data collected is available on the remote repository:  
 [**vmx104**](vmx104)  
 
 ## Continuous integration with Travis CI
