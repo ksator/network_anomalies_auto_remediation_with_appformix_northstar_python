@@ -2,15 +2,15 @@
 
 
 ## Documentation structure
-[**About this repo**](README.MD#about-this-repo)
-[**Clone this repository**](README.md#clone-this-repository)
-[**Configure Appformix to add network devices to monitor**](README.MD#configure-appformix-to-add-network-devices-to-monitor)
-[**Configure the network devices with the SNMP community used by Appformix**](README.MD#configure-the-network-devices-with-the-snmp-community-used-by-appformix)
-[**Network devices configuration for Appformix monitoring using telemetry**](README.MD#network-devices-configuration-for-appformix- monitoring-using-telemetry)
-[**webhooks**](README.MD#webhooks)
-[**Event driven automation in this repository**](README.MD#event-driven-automation-in-this-repository) 
-[**Continuous integration with Travis CI**](README.MD#continuous-integration-with-travis-ci)
-[**Looking for more automation solutions**](README.MD#looking-for-more-automation-solutions)
+[**About this repo**](README.MD#about-this-repo)  
+[**Clone this repository**](README.md#clone-this-repository)  
+[**Configure Appformix to add network devices to monitor**](README.MD#configure-appformix-to-add-network-devices-to-monitor)  
+[**Configure the network devices with the SNMP community used by Appformix**](README.MD#configure-the-network-devices-with-the-snmp-community-used-by-appformix)  
+[**Network devices configuration for Appformix monitoring using telemetry**](README.MD#network-devices-configuration-for-appformix-monitoring-using-telemetry)  
+[**webhooks**](README.MD#webhooks)  
+[**Event driven automation in this repository**](README.MD#event-driven-automation-in-this-repository)  
+[**Continuous integration with Travis CI**](README.MD#continuous-integration-with-travis-ci)  
+[**Looking for more automation solutions**](README.MD#looking-for-more-automation-solutions)  
 
 ## About this repo
 
