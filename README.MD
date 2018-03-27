@@ -174,17 +174,63 @@ lab@jedi-vmx-1-vcp> show system commit
 
 ## webhooks
 
+#### what is it
+
 A webhook is notification using an HTTP POST. A webhook is send by a system A to push data (json body as example) to a system B when an event occured in the system A. Then the system B will decide what to do with these details.  
 
-Appformix supports webhook. A notification is generated when the condition of an alarm is observed. You can configure an alarm to post notifications to an external HTTP endpoint. AppFormix will post a JSON payload to the endpoint for each notification.  
+#### Appformix webhooks
 
-The script [**northstar_rest_calls.py**](northstar_rest_calls.py) makes rest calls to Northstar SND controler to put a device in maintenance mode. During a maintenance event, the selected elements are considered logically down, and the system reroutes the LSPs around those elements during the maintenance period. After the maintenance event is completed, delegated and PCE-initiated LSPs are reverted back to optimal paths.  
+Appformix supports webhooks. A notification is generated when the condition of an alarm is observed. You can configure an alarm to post notifications to an external HTTP endpoint. AppFormix will post a JSON payload to the endpoint for each notification.  
 
-The script [**push_to_git.py**](push_to_git.py) collects data on junos devices (junos show commands output) and upload the data to a GIT server.  
+#### webhook usages in tjhis repo 
 
-The script [**webhook_listener.py**](webhook_listener.py) listens to webhooks and binds a function to a URL:   
-- It binds a webhook from appformix (notifications generated when the condition of an alarm is observed) to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
-- It binds a webhook from appformix (notifications generated when the condition of an alarm is observed) to the script [**push_to_git.py**](push_to_git.py).   
+The script [**webhook_listener.py**](webhook_listener.py) listens to webhooks and binds a function to each URL.   
+- It binds the webhook http://x.x.x.x:12345/northstar/put_device_in_maintenance (POST with JSON Body) sent by appformix to the script [**northstar_rest_calls.py**](northstar_rest_calls.py). The script [**webhook_listener.py**](webhook_listener.py) extracts the device name from the JSON body and pass it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py). The script [**northstar_rest_calls.py**](northstar_rest_calls.py) then makes rest calls to Northstar SDN controler to put this device in maintenance mode. During a maintenance event, the selected devices are considered logically down, and the system reroutes the LSPs around those devices during the maintenance period. After the maintenance event is completed, delegated and PCE-initiated LSPs are reverted back to optimal paths.  
+- It binds the webhook http://x.x.x.x:12345/junos/collect_data (POST with JSON body) from appformix to the script [**push_to_git.py**](push_to_git.py). The script [**webhook_listener.py**](webhook_listener.py) extracts the device name from the JSON body and pass it to the script [**push_to_git.py**](push_to_git.py). the script [**push_to_git.py**](push_to_git.py) then collects data on this junos devices (junos show commands output) and upload the data collected to a Git server.  
+
+You first need to define webhooks on Appformix.  
+From the GUI, select: settings, notification settings, notification services, add service (provide a service name and a service endpoint), setup.  
+
+Then you can create Appformix alarms, and map these alarms to webhooks.    
+You can do it from the Appformix GUI. Select add rule. Then:  
+ - scope: select network devices
+ - generate: select generate alert
+ - notification: select custom service 
+ - services: select the service name you created (webhook)
+ - then save
+
+Then start the listener [**webhook_listener.py**](webhook_listener.py):
+```
+# python webhook_listener.py
+ * Running on http://0.0.0.0:12345/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 290-737-301
+```
+Have Appformix to generate a notification (webhook).  
+The python script [**webhook_listener.py**](webhook_listener.py) will receive the HTTP POST and bind it to another python functions.  
+
+#### Example with the webhook http://x.x.x.x:12345/junos/collect_data
+The script [**webhook_listener.py**](webhook_listener.py) binds it to the script [**push_to_git.py**](push_to_git.py).  
+The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and pass it to the script [**push_to_git.py**](push_to_git.py).  
+Here's the output of [**webhook_listener.py**](webhook_listener.py) for the webhook http://x.x.x.x:12345/junos/collect_data  
+```
+172.18.0.5 - - [27/Mar/2018 13:11:30] "POST /junos/collect_data HTTP/1.1" 201 -
+```
+the script [**push_to_git.py**](push_to_git.py) runs on this device (the one notified by Appformix) junos show commands, collects the output, and push it to a Git server. 
+```
+# ls vmx104/
+show chassis hardware.txt  show interfaces extensive.txt  show version.txt
+```
+```
+# git log -1
+commit 38f0162a8d45419a3390d0805e43d7fe6dad4aa4
+Author: ksator <ksator@juniper.net>
+Date:   Tue Mar 27 13:11:16 2018 -0700
+
+    from Gitpython
+```
+[**vmx104**](vmx104)  
 
 ## Continuous integration with Travis CI
 
