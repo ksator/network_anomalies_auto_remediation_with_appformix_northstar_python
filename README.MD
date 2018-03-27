@@ -8,14 +8,13 @@ It has automation content to:
 - Configure the network devices with the SNMP community used by Appformix to monitor them
 - Modify on the network devices the IP address configured by Appformix for telemetry
 - Listen webhooks notifications sent by Appformix, and react to them (event driven automation)
-- The actions triggered are python scripts to: 
-      - collect automatically data on the "faulty" device and upload them on a Git server 
+- The actions triggered are python scripts to:   
+      - collect automatically data on the "faulty" device and upload them on a Git server  
       - make REST calls to Northstar SDN controler to put the faulty device in maintenance mode. The "faulty" device will be considered
       logically down for a certain amount time, and the SDN controler will reroute the LSPs around this device during the maintenance
       period. After the maintenance period, LSPs are reverted back to optimal paths.  
 
 I am using them with an Appformix standalone setup running version 2.15.2 installed on Ubuntu 16.04
-
 
 ## Clone this repository
 
@@ -175,15 +174,15 @@ lab@jedi-vmx-1-vcp> show system commit
 
 ## webhooks
 
-#### what is it
+### what is it?
 
-A webhook is notification using an HTTP POST. A webhook is send by a system A to push data (json body as example) to a system B when an event occured in the system A. Then the system B will decide what to do with these details.  
+A webhook is notification using an HTTP POST. A webhook is send by a system A to push data (json body as example) to a system B when an event occured in the system A. Then the system B will decide what to do with these details. Usage is event driven automation.   
 
-#### Appformix webhooks
+### Appformix webhooks
 
 Appformix supports webhooks. A notification is generated when the condition of an alarm is observed. You can configure an alarm to post notifications to an external HTTP endpoint. AppFormix will post a JSON payload to the endpoint for each notification.  
 
-#### webhook usages in tjhis repo 
+### webhook usages in this repo 
 
 The script [**webhook_listener.py**](webhook_listener.py) listens to webhooks and binds a function to each URL.   
 - It binds the webhook http://x.x.x.x:12345/northstar/put_device_in_maintenance (POST with JSON Body) sent by appformix to the script [**northstar_rest_calls.py**](northstar_rest_calls.py). The script [**webhook_listener.py**](webhook_listener.py) extracts the device name from the JSON body and pass it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py). The script [**northstar_rest_calls.py**](northstar_rest_calls.py) then makes rest calls to Northstar SDN controler to put this device in maintenance mode. During a maintenance event, the selected devices are considered logically down, and the system reroutes the LSPs around those devices during the maintenance period. After the maintenance event is completed, delegated and PCE-initiated LSPs are reverted back to optimal paths.  
@@ -211,7 +210,7 @@ Then start the listener [**webhook_listener.py**](webhook_listener.py):
 Have Appformix to generate a notification (webhook).  
 The python script [**webhook_listener.py**](webhook_listener.py) will receive the HTTP POST and bind it to another python functions.  
 
-#### Example with the webhook http://x.x.x.x:12345/junos/collect_data
+### Example with the webhook http://x.x.x.x:12345/junos/collect_data
 The script [**webhook_listener.py**](webhook_listener.py) binds it to the script [**push_to_git.py**](push_to_git.py).  
 The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and pass it to the script [**push_to_git.py**](push_to_git.py).  
 Here's the output of [**webhook_listener.py**](webhook_listener.py) for the webhook http://x.x.x.x:12345/junos/collect_data  
