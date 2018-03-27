@@ -4,15 +4,16 @@
 
 This repository has scripts to quickly demo network devices monitoring using Appformix  
 It has automation content to: 
-- [Add network devices to Appformix](README.MD#configure-appformix-to-add-network-devices-to-monitor)
-- [Configure the network devices with the SNMP community used by Appformix to monitor them](
-README.MD#configure-the-network-devices-with-the-snmp-community-used-by-appformix) 
-- [Modify on the network devices the IP address configured by Appformix for telemetry](README.MD#network-devices-configuration-for-appformix-monitoring-using-telemetry) 
-- [Listen webhooks notifications sent by Appformix, and react to them](README.MD#webhooks)  
-  - The actions triggered are python scripts to: 
-      - collect automatically data on the "faulty" device (junos show commands) and upload them on a GIT server 
-      - make REST calls to Northstar SDN controler to put the faulty device in maintenance mode
-  
+- Add network devices to Appformix
+- Configure the network devices with the SNMP community used by Appformix to monitor them
+- Modify on the network devices the IP address configured by Appformix for telemetry
+- Listen webhooks notifications sent by Appformix, and react to them (event driven automation)
+- The actions triggered are python scripts to: 
+      - collect automatically data on the "faulty" device and upload them on a Git server 
+      - make REST calls to Northstar SDN controler to put the faulty device in maintenance mode. The "faulty" device will be considered
+      logically down for a certain amount time, and the SDN controler will reroute the LSPs around this device during the maintenance
+      period. After the maintenance period, LSPs are reverted back to optimal paths.  
+
 I am using them with an Appformix standalone setup running version 2.15.2 installed on Ubuntu 16.04
 
 
