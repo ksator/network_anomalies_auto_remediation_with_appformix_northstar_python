@@ -1,5 +1,17 @@
 [![Build Status](https://travis-ci.org/ksator/appformix_demo_scripts.svg?branch=master)](https://travis-ci.org/ksator/appformix_demo_scripts)  
 
+
+## Documentation structure
+[**About this repo**](README.MD#about-this-repo)
+[**Clone this repository**](README.md#clone-this-repository)
+[**Configure Appformix to add network devices to monitor**](README.MD#configure-appformix-to-add-network-devices-to-monitor)
+[**Configure the network devices with the SNMP community used by Appformix**](README.MD#configure-the-network-devices-with-the-snmp-community-used-by-appformix)
+[**Network devices configuration for Appformix monitoring using telemetry**](README.MD#network-devices-configuration-for-appformix- monitoring-using-telemetry)
+[**webhooks**](README.MD#webhooks)
+[**Event driven automation in this repository**](README.MD#event-driven-automation-in-this-repository) 
+[**Continuous integration with Travis CI**](README.MD#continuous-integration-with-travis-ci)
+[**Looking for more automation solutions**](README.MD#looking-for-more-automation-solutions)
+
 ## About this repo
 
 This repository has scripts to quickly demo network devices monitoring using Appformix  
@@ -182,7 +194,7 @@ A webhook is notification using an HTTP POST. A webhook is send by a system A to
 
 Appformix supports webhooks. A notification is generated when the condition of an alarm is observed. You can configure an alarm to post notifications to an external HTTP endpoint. AppFormix will post a JSON payload to the endpoint for each notification.  
 
-### webhook usages in this repo 
+## Event driven automation in this repository 
 
 The script [**webhook_listener.py**](webhook_listener.py) listens to webhooks and binds a function to each URL.   
 - It binds the webhook http://x.x.x.x:12345/northstar/put_device_in_maintenance (POST with JSON Body) sent by appformix to the script [**northstar_rest_calls.py**](northstar_rest_calls.py). The script [**webhook_listener.py**](webhook_listener.py) extracts the device name from the JSON body and pass it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py). The script [**northstar_rest_calls.py**](northstar_rest_calls.py) then makes rest calls to Northstar SDN controler to put this device in maintenance mode. During a maintenance event, the selected devices are considered logically down, and the system reroutes the LSPs around those devices during the maintenance period. After the maintenance event is completed, delegated and PCE-initiated LSPs are reverted back to optimal paths.  
@@ -192,12 +204,7 @@ You first need to define webhooks on Appformix.
 From the GUI, select: settings, notification settings, notification services, add service (provide a service name and a service endpoint), setup.  
 
 Then you can create Appformix alarms, and map these alarms to webhooks.    
-You can do it from the Appformix GUI. Select add rule. Then:  
- - scope: select network devices
- - generate: select generate alert
- - notification: select custom service 
- - services: select the service name you created (webhook)
- - then save
+You can do it from the Appformix GUI. Select add rule. Then it should be obvious. scope: select network devices, generate: select generate alert, notification: select custom service, services: select the service name you created (webhook), then save.
 
 Then start the listener [**webhook_listener.py**](webhook_listener.py):
 ```
