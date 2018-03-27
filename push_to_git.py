@@ -3,7 +3,7 @@ import os
 import junos_devices
 
 def collect_and_push(dev):
-#    dev='10.49.124.59'
+    # dev='172.30.52.152'
     cwd = os.getcwd()
     repo = git.Repo(cwd)
     # print repo.git.status()

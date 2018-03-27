@@ -5,7 +5,7 @@ import os
 def collect_junos_commands(dev):
     if not os.path.exists(dev):
         os.makedirs(dev)
-    device=Device (host=dev, user='northstar', password='Embe1mpls')
+    device=Device (host=dev, user='lab', password='m0naco')
     device.open()
     commands = ["show version", "show chassis hardware", "show interfaces extensive"]
     for item in commands: 
