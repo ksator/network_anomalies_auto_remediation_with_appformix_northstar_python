@@ -8,11 +8,11 @@ def collect_junos_commands(dev):
     f=open('devices.yml', 'r')
     my_vars = load(f.read())
     f.close()
-    if use_snmp_2c
+    if my_vars['use_snmp_2c']:
        for item in my_vars['snmp_2c']['devices']:
           if item['name'] == dev:
              dev_ip =  item['ip']
-    if use_jti
+    if my_vars['use_jti']:
        for item in my_vars['jti']['devices']:
           if item['name'] == dev:
              dev_ip =  item['out_of_band']
