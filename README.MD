@@ -15,19 +15,22 @@
 ## About this repo
 
 This repository has scripts to quickly demo network devices monitoring using Appformix.  
-It has also scripts to demo **event driven automation** leveraging Appformix. 
+It has also scripts to demo **event driven automation** leveraging Appformix.  
+
 It has automation content to: 
 - Add network devices to Appformix
 - Configure the network devices with the SNMP community used by Appformix to monitor them
 - Modify on the network devices the IP address configured by Appformix for telemetry
 - Listen webhooks notifications sent by Appformix, and react to them (**event driven automation**)
 - The actions triggered automatically are python scripts to:   
-      - collect data on the "faulty" device and upload them on a Git server  
-      - make REST calls to Northstar SDN controler to put the "faulty" device in maintenance mode. The "faulty" device will be considered
+   - collect data on the "faulty" device and upload them on a Git server  
+   - make REST calls to Northstar SDN controler to put the "faulty" device in maintenance mode. The "faulty" device will be considered
       logically down for a certain amount time, and the SDN controler will reroute the LSPs around this device during the maintenance
       period. After the maintenance period, LSPs are reverted back to optimal paths.  
 
 I am using them with an Appformix standalone setup running version 2.15.2 installed on Ubuntu 16.04
+
+This repository doesnt cover how to install Appformix or Northstar.  
 
 ## Clone this repository
 
@@ -47,6 +50,8 @@ apt-get upgrade
 apt-get install -y python-dev libxml2-dev python-pip libxslt1-dev build-essential libssl-dev libffi-dev git curl
 pip install junos-eznc wget requests ipaddress cryptography flask Gitpython
 ```
+
+This repository requires Northstar version 4 or above. 
 
 ## Configure Appformix to add network devices to monitor
 
