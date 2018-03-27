@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/ksator/appformix_demo_scripts.svg?branch=master)](https://travis-ci.org/ksator/appformix_demo_scripts)  
-
+[![Build Status](https://travis-ci.org/ksator/event_driven_automation_with_appformix.svg?branch=master)](https://travis-ci.org/ksator/event_driven_automation_with_appformix)
 
 ## Documentation structure
 [**About this repo**](README.MD#about-this-repo)  
@@ -255,7 +254,7 @@ The syntax of the python scripts in this repository are tested automatically by 
 The files [**.travis.yml**](.travis.yml) and [**requirements.txt**](requirements.txt) at the root of this repository are used for this.  
 
 Here's the last build status
-[![Build Status](https://travis-ci.org/ksator/appformix_demo_scripts.svg?branch=master)](https://travis-ci.org/ksator/appformix_demo_scripts)
+[![Build Status](https://travis-ci.org/ksator/event_driven_automation_with_appformix.svg?branch=master)](https://travis-ci.org/ksator/event_driven_automation_with_appformix)
 
 ## Looking for more automation solutions
 
