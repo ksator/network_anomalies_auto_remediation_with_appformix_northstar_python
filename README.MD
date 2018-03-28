@@ -258,12 +258,12 @@ Have Appformix to generate a notification (webhook).
 
 The python script [**webhook_listener.py**](webhook_listener.py) will receive the HTTP POST and bind it to another python functions.  
 
-### Example with the webhook http://x.x.x.x:12345/junos/collect_data
+### Example with the webhook ```http://x.x.x.x:12345/junos/collect_data```
 
 The script [**webhook_listener.py**](webhook_listener.py) binds it to the script [**push_to_git.py**](push_to_git.py).  
 The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and pass it to the script [**push_to_git.py**](push_to_git.py).  
 The script [**push_to_git.py**](push_to_git.py) collect junos show commands on the faulty device (the one notified by Appformix) and push the data collected to a Git server.   
-Here's the output of [**webhook_listener.py**](webhook_listener.py) for the webhook http://x.x.x.x:12345/junos/collect_data  
+Here's the output of [**webhook_listener.py**](webhook_listener.py) for the webhook ```http://x.x.x.x:12345/junos/collect_data```  
 ```
 172.18.0.5 - - [27/Mar/2018 13:11:30] "POST /junos/collect_data HTTP/1.1" 201 -
 ```
@@ -283,13 +283,13 @@ Date:   Tue Mar 27 13:11:16 2018 -0700
 ```
 So the data collected is available on the remote repository: [**vmx104**](vmx104)  
 
-### Example with the webhook http://x.x.x.x:12345/northstar/put_device_in_maintenance
+### Example with the webhook ```http://x.x.x.x:12345/northstar/put_device_in_maintenance```
 
 The script [**webhook_listener.py**](webhook_listener.py) binds it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
 The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and pass it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
 The script [**northstar_rest_calls.py**](northstar_rest_calls.py) makes rest calls to Northstar SDN controler to put this device (the one notified by Appformix) in maintenance mode.  
 During the maintenance event, this device will be considered logically down, and Northstar will reroute the LSPs around this device during the maintenance period. After the maintenance event is completed, the LSPs will be reverted back to optimal paths.  
-Here's the output of [**webhook_listener.py**](webhook_listener.py) for the webhook http://x.x.x.x:12345/junos/collect_data  
+Here's the output of [**webhook_listener.py**](webhook_listener.py) for the webhook ```http://x.x.x.x:12345/northstar/put_device_in_maintenance```  
 ```
 172.18.0.5 - - [28/Mar/2018 04:51:29] "POST /northstar/put_device_in_maintenance HTTP/1.1" 201 -
 ```
