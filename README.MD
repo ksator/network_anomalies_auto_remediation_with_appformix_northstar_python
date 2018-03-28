@@ -16,21 +16,18 @@
 
 This repository has scripts to quickly demo network devices monitoring using Appformix.  
 
-It has also scripts to demo event driven automation leveraging Appformix.  
-The event driven automation demos are: 
+It has also scripts to demo event driven automation leveraging Appformix. The event driven automation demos are: 
 - Based on Appformix notifications, automatically collect additionnal data from the "faulty" device and automatically upload the data collected on a Git server
 - Based on Appformix notifications, automatically make REST calls to Northstar SDN controler to put the "faulty" device in maintenance mode. The "faulty" device will be considered logically down for a certain amount time, and the SDN controler will reroute the LSPs around this device during the maintenance period. After the maintenance period, LSPs are reverted back to optimal paths.
 
-This repository has automation content to: 
+Here's more details about the automation content available in this repository. It has automation content to:  
 - Add network devices to Appformix
 - Configure the network devices with the SNMP community used by Appformix to monitor them
 - Modify on the network devices the IP address configured by Appformix for telemetry
 - Listen to the webhooks notifications sent by Appformix
-- React the webhooks notifications sent by Appformix (event driven automation). The reactions triggered automatically are python scripts to:   
+- React to the webhooks notifications sent by Appformix (event driven automation). The reactions triggered automatically are python scripts to:   
    - collect additionnal data on the "faulty" device and upload them on a Git server  
-   - make REST calls to Northstar SDN controler to put the "faulty" device in maintenance mode. The "faulty" device will be considered
-   logically down for a certain amount time, and the SDN controler will reroute the LSPs around this device during the maintenance
-   period. After the maintenance period, LSPs are reverted back to optimal paths.  
+   - make REST calls to Northstar SDN controler to put the "faulty" device in maintenance mode. 
 
 I am using them with an Appformix standalone setup running version 2.15.2 installed on Ubuntu 16.04
 
@@ -57,7 +54,7 @@ This repository uses the following main building blocks:
   - SaltStack can be used as a better alternative to this webhook listener. 
 - Python scripts triggered automatically by the webhook listener:
   - To make actions against Northstar
-  - To make actions against Junos devices 
+  - To make actions against Junos devices and a Git server
  
 ## Clone this repository
 
