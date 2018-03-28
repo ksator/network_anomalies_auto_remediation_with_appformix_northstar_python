@@ -2,6 +2,7 @@
 
 ## Documentation structure
 [**About this repo**](README.MD#about-this-repo)  
+[**Building blocks**](README.MD#building_blocks)  
 [**Clone this repository**](README.MD#clone-this-repository)  
 [**Configure Appformix to add network devices to monitor**](README.MD#configure-appformix-to-add-network-devices-to-monitor)  
 [**Configure the network devices with the SNMP community used by Appformix**](README.MD#configure-the-network-devices-with-the-snmp-community-used-by-appformix)  
@@ -15,7 +16,7 @@
 
 This repository has scripts to quickly demo network devices monitoring using Appformix.  
 It has also scripts to demo event driven automation leveraging Appformix.  
-
+So this repo has content to run demos, to demonstrate a concept.    
 It has automation content to: 
 - Add network devices to Appformix
 - Configure the network devices with the SNMP community used by Appformix to monitor them
@@ -31,6 +32,29 @@ I am using them with an Appformix standalone setup running version 2.15.2 instal
 
 This repository doesnt cover how to install Appformix or Northstar.  
 
+## Building blocks
+
+This repository uses the following building blocks: 
+- Juniper vMX devices. 
+  - But other Junos devices can be used. 
+- Northstar SDN controller. 
+  - Version 4 or above is required.   
+- Appformix 
+  - To collect data (SNMP and JTI streaming telemetry) from Junos devices. 
+  - To generate webhooks notifications. 
+  - OpenNTI can be used as an alternative to Appformix to collect data from Junos devices and generate webhooks notifications to external
+  systems.    
+- a webhook listener. This is a python script that: 
+  - Listens to webhooks
+  - Extracts data from the webhooks (the network device name as example)
+  - Maps the webhooks to python functions
+  - Passes the data extracted from the webhooks to the mapped python function
+  - Executes the mapped python function. 
+  - SaltStack can be used as a better alternative to this webhook listener. 
+- Other python scripts:
+  - to make actions against Northstar
+  - to make actions against Junos devices 
+ 
 ## Clone this repository
 
 Run these commands to clone this repository:
