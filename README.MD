@@ -2,7 +2,7 @@
 
 ## Documentation structure
 [**About this repo**](README.MD#about-this-repo)  
-[**Building blocks**](README.MD#building-blocks)
+[**Building blocks**](README.MD#building-blocks)  
 [**Clone this repository**](README.MD#clone-this-repository)  
 [**Configure Appformix to add network devices to monitor**](README.MD#configure-appformix-to-add-network-devices-to-monitor)  
 [**Configure the network devices with the SNMP community used by Appformix**](README.MD#configure-the-network-devices-with-the-snmp-community-used-by-appformix)  
@@ -15,18 +15,22 @@
 ## About this repo
 
 This repository has scripts to quickly demo network devices monitoring using Appformix.  
+
 It has also scripts to demo event driven automation leveraging Appformix.  
-So this repo has content to run demos, to demonstrate a concept.    
-It has automation content to: 
+The event driven automation demos are: 
+- Based on Appformix notifications, automatically collect additionnal data from the "faulty" device and automatically upload the data collected on a Git server
+- Based on Appformix notifications, automatically make REST calls to Northstar SDN controler to put the "faulty" device in maintenance mode. The "faulty" device will be considered logically down for a certain amount time, and the SDN controler will reroute the LSPs around this device during the maintenance period. After the maintenance period, LSPs are reverted back to optimal paths.
+
+This repository has automation content to: 
 - Add network devices to Appformix
 - Configure the network devices with the SNMP community used by Appformix to monitor them
 - Modify on the network devices the IP address configured by Appformix for telemetry
-- Listen webhooks notifications sent by Appformix, and react to them (event driven automation)
-- The actions triggered automatically are python scripts to:   
-   - collect data on the "faulty" device and upload them on a Git server  
+- Listen to the webhooks notifications sent by Appformix
+- React the webhooks notifications sent by Appformix (event driven automation). The reactions triggered automatically are python scripts to:   
+   - collect additionnal data on the "faulty" device and upload them on a Git server  
    - make REST calls to Northstar SDN controler to put the "faulty" device in maintenance mode. The "faulty" device will be considered
-      logically down for a certain amount time, and the SDN controler will reroute the LSPs around this device during the maintenance
-      period. After the maintenance period, LSPs are reverted back to optimal paths.  
+   logically down for a certain amount time, and the SDN controler will reroute the LSPs around this device during the maintenance
+   period. After the maintenance period, LSPs are reverted back to optimal paths.  
 
 I am using them with an Appformix standalone setup running version 2.15.2 installed on Ubuntu 16.04
 
@@ -271,6 +275,17 @@ Date:   Tue Mar 27 13:11:16 2018 -0700
 So the data collected is available on the remote repository:  
 [**vmx104**](vmx104)  
 
+
+```
+root@ubuntu:~/khelil/appformix_demo_scripts# python webhook_listener.py
+ * Running on http://0.0.0.0:12345/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 290-737-301
+172.18.0.5 - - [28/Mar/2018 04:51:29] "POST /northstar/put_device_in_maintenance HTTP/1.1" 201 -
+172.18.0.5 - - [28/Mar/2018 04:56:44] "POST /northstar/put_device_in_maintenance HTTP/1.1" 201 -
+^Croot@ubuntu:~/khelil/appformix_demo_scripts# git status
+```
 ## Continuous integration with Travis CI
 
 There is a github webhook with Travis CI  
