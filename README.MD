@@ -9,6 +9,7 @@
 [**Network devices configuration for Appformix monitoring using telemetry**](README.MD#network-devices-configuration-for-appformix-monitoring-using-telemetry)  
 [**webhooks**](README.MD#webhooks)  
 [**Event driven automation**](README.MD#event-driven-automation)  
+[**More details to reproduce the event driven automation demos**](README.MD#more-details-to-reproduce-the-event-driven-automation-demos)  
 [**Continuous integration with Travis CI**](README.MD#continuous-integration-with-travis-ci)  
 [**Looking for more automation solutions**](README.MD#looking-for-more-automation-solutions)  
 
@@ -230,7 +231,7 @@ The script [**webhook_listener.py**](webhook_listener.py) listens to webhooks an
 - It binds the webhook http://x.x.x.x:12345/northstar/put_device_in_maintenance (POST with JSON Body) sent by appformix to the script [**northstar_rest_calls.py**](northstar_rest_calls.py). The script [**webhook_listener.py**](webhook_listener.py) extracts the device name from the JSON body and pass it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py). The script [**northstar_rest_calls.py**](northstar_rest_calls.py) then makes rest calls to Northstar SDN controler to put this device in maintenance mode. During a maintenance event, the selected devices are considered logically down, and the system reroutes the LSPs around those devices during the maintenance period. After the maintenance event is completed, delegated and PCE-initiated LSPs are reverted back to optimal paths.  
 - It binds the webhook http://x.x.x.x:12345/junos/collect_data (POST with JSON body) from appformix to the script [**push_to_git.py**](push_to_git.py). The script [**webhook_listener.py**](webhook_listener.py) extracts the device name from the JSON body and pass it to the script [**push_to_git.py**](push_to_git.py). the script [**push_to_git.py**](push_to_git.py) then collects data on this junos devices (junos show commands output) and upload the data collected to a Git server.  
 
-## Reproduce the demo
+## More details to reproduce the event driven automation demos
 
 Define webhooks on Appformix: From the GUI, select: settings, notification settings, notification services, add service (provide a service name and a service endpoint), setup.  
 
@@ -250,19 +251,20 @@ Have Appformix to generate a notification (webhook).
 The python script [**webhook_listener.py**](webhook_listener.py) will receive the HTTP POST and bind it to another python functions.  
 
 ### Example with the webhook http://x.x.x.x:12345/junos/collect_data
+
 The script [**webhook_listener.py**](webhook_listener.py) binds it to the script [**push_to_git.py**](push_to_git.py).  
 The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and pass it to the script [**push_to_git.py**](push_to_git.py).  
+the script [**push_to_git.py**](push_to_git.py) runs on this device (the one notified by Appformix) junos show commands, collects the output, and push it to a Git server.   
 Here's the output of [**webhook_listener.py**](webhook_listener.py) for the webhook http://x.x.x.x:12345/junos/collect_data  
 ```
 172.18.0.5 - - [27/Mar/2018 13:11:30] "POST /junos/collect_data HTTP/1.1" 201 -
 ```
-the script [**push_to_git.py**](push_to_git.py) runs on this device (the one notified by Appformix) junos show commands, collects the output, and push it to a Git server.   
-The data is collected and saved the local repository (local copy of the remote repository):  
+The data is automatically collected from the faulty device and saved the local repository:
 ```
 # ls vmx104/
 show chassis hardware.txt  show interfaces extensive.txt  show version.txt
 ```
-And then pushed on the remote repository:  
+The data collected is then pushed automatically on the remote repository:  
 ```
 # git log -1
 commit 38f0162a8d45419a3390d0805e43d7fe6dad4aa4
@@ -271,20 +273,18 @@ Date:   Tue Mar 27 13:11:16 2018 -0700
 
     from Gitpython
 ```
-So the data collected is available on the remote repository:  
-[**vmx104**](vmx104)  
+So the data collected is available on the remote repository: [**vmx104**](vmx104)  
 
+### Example with the webhook http://x.x.x.x:12345/northstar/put_device_in_maintenance
 
+The script [**webhook_listener.py**](webhook_listener.py) binds it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
+The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and pass it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
+The script [**northstar_rest_calls.py**](northstar_rest_calls.py) makes rest calls to Northstar SDN controler to put this device in maintenance mode. During a maintenance event, the selected devices are considered logically down, and the system reroutes the LSPs around those devices during the maintenance period. After the maintenance event is completed, delegated and PCE-initiated LSPs are reverted back to optimal paths.  
+Here's the output of [**webhook_listener.py**](webhook_listener.py) for the webhook http://x.x.x.x:12345/junos/collect_data  
 ```
-root@ubuntu:~/khelil/appformix_demo_scripts# python webhook_listener.py
- * Running on http://0.0.0.0:12345/ (Press CTRL+C to quit)
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 290-737-301
 172.18.0.5 - - [28/Mar/2018 04:51:29] "POST /northstar/put_device_in_maintenance HTTP/1.1" 201 -
-172.18.0.5 - - [28/Mar/2018 04:56:44] "POST /northstar/put_device_in_maintenance HTTP/1.1" 201 -
-^Croot@ubuntu:~/khelil/appformix_demo_scripts# git status
 ```
+
 ## Continuous integration with Travis CI
 
 There is a github webhook with Travis CI  
