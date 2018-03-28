@@ -230,13 +230,13 @@ The script [**webhook_listener.py**](webhook_listener.py) listens to webhooks an
 - It binds the webhook http://x.x.x.x:12345/northstar/put_device_in_maintenance (POST with JSON Body) sent by appformix to the script [**northstar_rest_calls.py**](northstar_rest_calls.py). The script [**webhook_listener.py**](webhook_listener.py) extracts the device name from the JSON body and pass it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py). The script [**northstar_rest_calls.py**](northstar_rest_calls.py) then makes rest calls to Northstar SDN controler to put this device in maintenance mode. During a maintenance event, the selected devices are considered logically down, and the system reroutes the LSPs around those devices during the maintenance period. After the maintenance event is completed, delegated and PCE-initiated LSPs are reverted back to optimal paths.  
 - It binds the webhook http://x.x.x.x:12345/junos/collect_data (POST with JSON body) from appformix to the script [**push_to_git.py**](push_to_git.py). The script [**webhook_listener.py**](webhook_listener.py) extracts the device name from the JSON body and pass it to the script [**push_to_git.py**](push_to_git.py). the script [**push_to_git.py**](push_to_git.py) then collects data on this junos devices (junos show commands output) and upload the data collected to a Git server.  
 
-You first need to define webhooks on Appformix.  
-From the GUI, select: settings, notification settings, notification services, add service (provide a service name and a service endpoint), setup.  
+## Reproduce the demo
 
-Then you can create Appformix alarms, and map these alarms to webhooks.    
-You can do it from the Appformix GUI. Select add rule. Then it should be obvious. scope: select network devices, generate: select generate alert, notification: select custom service, services: select the service name you created (webhook), then save.
+Define webhooks on Appformix: From the GUI, select: settings, notification settings, notification services, add service (provide a service name and a service endpoint), setup.  
 
-Then start the listener [**webhook_listener.py**](webhook_listener.py):
+Create Appformix alarms, and map these alarms to webhooks. You can do it from the Appformix GUI. Select add rule. Then it should be obvious. scope: select network devices, generate: select generate alert, notification: select custom service, services: select the service name you created (webhook), then save.
+
+Start the listener [**webhook_listener.py**](webhook_listener.py):
 ```
 # python webhook_listener.py
  * Running on http://0.0.0.0:12345/ (Press CTRL+C to quit)
@@ -244,7 +244,9 @@ Then start the listener [**webhook_listener.py**](webhook_listener.py):
  * Debugger is active!
  * Debugger PIN: 290-737-301
 ```
+
 Have Appformix to generate a notification (webhook).  
+
 The python script [**webhook_listener.py**](webhook_listener.py) will receive the HTTP POST and bind it to another python functions.  
 
 ### Example with the webhook http://x.x.x.x:12345/junos/collect_data
