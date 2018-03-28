@@ -282,7 +282,7 @@ So the data collected is available on the remote repository: [**vmx104**](vmx104
 The script [**webhook_listener.py**](webhook_listener.py) binds it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
 The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and pass it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
 The script [**northstar_rest_calls.py**](northstar_rest_calls.py) makes rest calls to Northstar SDN controler to put this device (the one notified by Appformix) in maintenance mode. During the maintenance event, this device will be considered logically down, and Northstar will reroute the LSPs around this device during the maintenance period. After the maintenance event is completed, the LSPs will be reverted back to optimal paths.  
-Here's the output of [**webhook_listener.py**](webhook_listener.py) for the webhook http<nolink>://x.x.x.x:12345/junos/collect_data  
+Here's the output of [**webhook_listener.py**](webhook_listener.py) for the webhook http://x.x.x.x:12345/junos/collect_data  
 ```
 172.18.0.5 - - [28/Mar/2018 04:51:29] "POST /northstar/put_device_in_maintenance HTTP/1.1" 201 -
 ```
