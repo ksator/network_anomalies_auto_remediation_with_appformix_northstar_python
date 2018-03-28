@@ -20,7 +20,7 @@ This repository has scripts to quickly demo network devices monitoring using App
 It has also scripts to demo event driven automation leveraging Appformix. The event driven automation demos are: 
 - Based on Appformix webhook notifications, automatically collect additionnal data from the "faulty" device and automatically upload the data collected on a Git server
 - Based on Appformix webhook notifications, automatically make REST calls to Northstar SDN controler to put the "faulty" device in maintenance mode. The "faulty" device will be considered logically down for a certain amount time, and the SDN controler will reroute the LSPs around this device during the maintenance period. After the maintenance period, LSPs are reverted back to optimal paths.  
-![unplanned-maintenance-operations.pdf](unplanned-maintenance-operations.pdf)  
+![unplanned-maintenance-operations.png](unplanned-maintenance-operations.png)  
 
 
 Here's more details about the automation content available in this repository. It has automation content to:  
