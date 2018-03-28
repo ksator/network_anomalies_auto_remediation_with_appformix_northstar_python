@@ -2,7 +2,7 @@
 
 ## Documentation structure
 [**About this repo**](README.MD#about-this-repo)  
-[**Building blocks**](README.MD#building_blocks)  
+[**Building blocks**](README.MD#building-blocks)
 [**Clone this repository**](README.MD#clone-this-repository)  
 [**Configure Appformix to add network devices to monitor**](README.MD#configure-appformix-to-add-network-devices-to-monitor)  
 [**Configure the network devices with the SNMP community used by Appformix**](README.MD#configure-the-network-devices-with-the-snmp-community-used-by-appformix)  
@@ -34,9 +34,9 @@ This repository doesnt cover how to install Appformix or Northstar.
 
 ## Building blocks
 
-This repository uses the following building blocks: 
+This repository uses the following main building blocks: 
 - Juniper vMX devices. 
-  - But other Junos devices can be used. 
+  - Other Junos devices can be used. 
 - Northstar SDN controller. 
   - Version 4 or above is required.   
 - Appformix 
@@ -44,16 +44,16 @@ This repository uses the following building blocks:
   - To generate webhooks notifications. 
   - OpenNTI can be used as an alternative to Appformix to collect data from Junos devices and generate webhooks notifications to external
   systems.    
-- a webhook listener. This is a python script that: 
+- A webhook listener. This is a python script that: 
   - Listens to webhooks
   - Extracts data from the webhooks (the network device name as example)
   - Maps the webhooks to python functions
   - Passes the data extracted from the webhooks to the mapped python function
   - Executes the mapped python function. 
   - SaltStack can be used as a better alternative to this webhook listener. 
-- Other python scripts:
-  - to make actions against Northstar
-  - to make actions against Junos devices 
+- Python scripts triggered automatically by the webhook listener:
+  - To make actions against Northstar
+  - To make actions against Junos devices 
  
 ## Clone this repository
 
