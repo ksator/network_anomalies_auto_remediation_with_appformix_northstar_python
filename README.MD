@@ -7,7 +7,7 @@
 [**Configure Appformix to add network devices to monitor**](README.MD#configure-appformix-to-add-network-devices-to-monitor)  
 [**Configure the network devices with the SNMP community used by Appformix**](README.MD#configure-the-network-devices-with-the-snmp-community-used-by-appformix)  
 [**Network devices configuration for Appformix monitoring using telemetry**](README.MD#network-devices-configuration-for-appformix-monitoring-using-telemetry)  
-[**webhooks**](README.MD#webhooks)  
+[**Webhooks**](README.MD#webhooks)  
 [**Event driven automation**](README.MD#event-driven-automation)  
 [**More details to reproduce the event driven automation demos**](README.MD#more-details-to-reproduce-the-event-driven-automation-demos)  
 [**Continuous integration with Travis CI**](README.MD#continuous-integration-with-travis-ci)  
@@ -215,9 +215,9 @@ lab@jedi-vmx-1-vcp> show system commit
 
 ```
 
-## webhooks
+## Webhooks
 
-### what is it?
+### What is it?
 
 A webhook is notification using an HTTP POST. A webhook is send by a system A to push data (json body as example) to a system B when an event occured in the system A. Then the system B will decide what to do with these details. Usage is event driven automation.   
 
@@ -282,7 +282,7 @@ So the data collected is available on the remote repository: [**vmx104**](vmx104
 The script [**webhook_listener.py**](webhook_listener.py) binds it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
 The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and pass it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
 The script [**northstar_rest_calls.py**](northstar_rest_calls.py) makes rest calls to Northstar SDN controler to put this device (the one notified by Appformix) in maintenance mode. During the maintenance event, this device will be considered logically down, and Northstar will reroute the LSPs around this device during the maintenance period. After the maintenance event is completed, the LSPs will be reverted back to optimal paths.  
-Here's the output of [**webhook_listener.py**](webhook_listener.py) for the webhook http://x.x.x.x:12345/junos/collect_data  
+Here's the output of [**webhook_listener.py**](webhook_listener.py) for the webhook http<nolink>://x.x.x.x:12345/junos/collect_data  
 ```
 172.18.0.5 - - [28/Mar/2018 04:51:29] "POST /northstar/put_device_in_maintenance HTTP/1.1" 201 -
 ```
