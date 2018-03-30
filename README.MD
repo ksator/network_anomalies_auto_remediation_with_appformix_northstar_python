@@ -18,24 +18,23 @@
 This repository has scripts to quickly demo network devices monitoring using Appformix.  
 
 It has also scripts to demo event driven automation leveraging Appformix. The event driven automation demos are: 
-- Based on Appformix webhook notifications, automatically collect additionnal data from the "faulty" device and automatically upload the data collected on a Git server  
+- Based on Appformix webhook notifications, automatically collect additional data from the "faulty" device and automatically upload the data collected on a Git server  
 ![automated-data-collection.png](automated-data-collection.png)  
-- Based on Appformix webhook notifications, automatically make REST calls to Northstar SDN controler to put the "faulty" device in maintenance mode. The "faulty" device will be considered logically down for a certain amount time, and the SDN controler will reroute the LSPs around this device during the maintenance period. After the maintenance period, LSPs are reverted back to optimal paths.  
+- Based on Appformix webhook notifications, automatically make REST calls to Northstar SDN controller to put the "faulty" device in maintenance mode. The "faulty" device will be considered logically down for a certain amount time, and the SDN controller will reroute the LSPs around this device during the maintenance period. After the maintenance period, LSPs are reverted back to optimal paths.  
 ![unplanned-maintenance-operations.png](unplanned-maintenance-operations.png)  
 
-
-Here's more details about the automation content available in this repository. It has automation content to:  
+Here are more details about the automation content available in this repository. It has automation content to:  
 - Add network devices to Appformix
 - Configure the network devices with the SNMP community used by Appformix to monitor them
-- Modify on the network devices the IP address configured by Appformix for telemetry
+- Modify the IP address configured by Appformix for telemetry on the network devices
 - Listen to the webhooks notifications sent by Appformix
 - React to the webhooks notifications sent by Appformix (event driven automation). The reactions triggered automatically are python scripts to:   
-   - collect additionnal data on the "faulty" device and upload them on a Git server  
-   - make REST calls to Northstar SDN controler to put the "faulty" device in maintenance mode. 
+   - collect additional data on the "faulty" device and upload them on a Git server  
+   - make REST calls to Northstar SDN controller to put the "faulty" device in maintenance mode. 
 
 I am using them with an Appformix standalone setup running version 2.15.2 installed on Ubuntu 16.04
 
-This repository doesnt cover how to install Appformix or Northstar.  
+This repository doesn’t cover how to install Appformix or Northstar.  
 
 ## Building blocks
 
@@ -132,7 +131,7 @@ ansible-playbook -i inventory appformix_standalone.yml
 ```
 ## Configure the network devices with the SNMP community used by Appformix
 
-You need to configure the network devices with the SNMP commninity used by Appformix. The script [**configure_snmp.py**](configure_snmp.py) renders the template [**snmp.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**snmp.conf**](snmp.conf). This file is then loaded and commited on all network devices used with SNMP monitoring.
+You need to configure the network devices with the SNMP community used by Appformix. The script [**configure_snmp.py**](configure_snmp.py) renders the template [**snmp.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**snmp.conf**](snmp.conf). This file is then loaded and committed on all network devices used with SNMP monitoring.
  
 ```
 python configure_snmp.py
@@ -188,7 +187,7 @@ lab@jedi-vmx-1-vcp>
 
 ```
 If Appformix has serveral ip addresses, and you want to configure the network devices to use a different IP address than the one configured by appformix for telemetry server, execute the python script [**telemetry.py**](telemetry.py). 
-The python script [**telemetry.py**](telemetry.py) renders the template [**telemetry.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**telemetry.conf**](telemetry.conf). This file is then loaded and commited on all network devices used with JTI telemetry.  
+The python script [**telemetry.py**](telemetry.py) renders the template [**telemetry.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**telemetry.conf**](telemetry.conf). This file is then loaded and committed on all network devices used with JTI telemetry.  
 
 ```
 cd appformix_demo_scripts
@@ -222,7 +221,7 @@ lab@jedi-vmx-1-vcp> show system commit
 
 ### What is it?
 
-A webhook is notification using an HTTP POST. A webhook is send by a system A to push data (json body as example) to a system B when an event occured in the system A. Then the system B will decide what to do with these details. Usage is event driven automation.   
+A webhook is notification using an HTTP POST. A webhook is sent by a system A to push data (json body as example) to a system B when an event occurred in the system A. Then the system B will decide what to do with these details. Usage is event driven automation.   
 
 ### Appformix webhooks
 
@@ -243,10 +242,10 @@ The script [**push_to_git.py**](push_to_git.py) then collects data on this junos
 ## More details to reproduce the event driven automation demos
 
 Define webhooks on Appformix.  
-From the GUI, select: settings, notification settings, notification services, add service (provide a service name and a service endpoint), setup.  
+From the GUI, select: ```settings```, ```notification settings```, ```notification services```, ```add service``` (provide a service name and a service endpoint), ```setup```.  
 
 Create Appformix alarms, and map these alarms to webhooks.  
-You can do it from the Appformix GUI. Select add rule. Then it should be obvious. scope: select network devices, generate: select generate alert, notification: select custom service, services: select the service name you created (webhook), then save.
+You can do it from the Appformix GUI. Select add rule. Then it should be obvious. ```scope```: select network devices, ```generate```: select generate alert, ```notification```: select custom service, ```services```: select the service name you created (webhook), then ```save```.
 
 Start the listener [**webhook_listener.py**](webhook_listener.py):
 ```
@@ -259,13 +258,13 @@ Start the listener [**webhook_listener.py**](webhook_listener.py):
 
 Have Appformix to generate a notification (webhook).  
 
-The python script [**webhook_listener.py**](webhook_listener.py) will receive the HTTP POST and bind it to another python functions.  
+The python script [**webhook_listener.py**](webhook_listener.py) will receive HTTP POST and bind them to other python functions.  
 
-### Example with the webhook ```http://x.x.x.x:12345/junos/collect_data```
+### Example with the webhook ```http://webhook_listener_ip:12345/junos/collect_data```
 
 The script [**webhook_listener.py**](webhook_listener.py) binds it to the script [**push_to_git.py**](push_to_git.py).  
-The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and pass it to the script [**push_to_git.py**](push_to_git.py).  
-The script [**push_to_git.py**](push_to_git.py) collect junos show commands on the faulty device (the one notified by Appformix) and push the data collected to a Git server.   
+The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and passes it to the script [**push_to_git.py**](push_to_git.py).  
+The script [**push_to_git.py**](push_to_git.py) collect junos show commands on the faulty device (the one notified by Appformix) and pushes the data collected to a Git server.   
 Here's the output of [**webhook_listener.py**](webhook_listener.py) for this webhook 
 ```
 172.18.0.5 - - [27/Mar/2018 13:11:30] "POST /junos/collect_data HTTP/1.1" 201 -
@@ -286,11 +285,11 @@ Date:   Tue Mar 27 13:11:16 2018 -0700
 ```
 So the data collected is available on the remote repository: [**vmx104**](vmx104)  
 
-### Example with the webhook ```http://x.x.x.x:12345/northstar/put_device_in_maintenance```
+### Example with the webhook ```http://webhook_listener_ip:12345/northstar/put_device_in_maintenance```
 
 The script [**webhook_listener.py**](webhook_listener.py) binds it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
 The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and pass it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
-The script [**northstar_rest_calls.py**](northstar_rest_calls.py) makes rest calls to Northstar SDN controler to put this device (the one notified by Appformix) in maintenance mode.  
+The script [**northstar_rest_calls.py**](northstar_rest_calls.py) makes rest calls to Northstar SDN controller to put this device (the one notified by Appformix) in maintenance mode.  
 During the maintenance event, this device will be considered logically down, and Northstar will reroute the LSPs around this device during the maintenance period. After the maintenance event is completed, the LSPs will be reverted back to optimal paths.  
 Here's the output of [**webhook_listener.py**](webhook_listener.py) for this webhook 
 ```
@@ -300,7 +299,7 @@ Here's the output of [**webhook_listener.py**](webhook_listener.py) for this web
 ## Continuous integration with Travis CI
 
 There is a github webhook with Travis CI  
-The syntax of the python scripts in this repository are tested automatically by Travis CI.  
+The syntax of the python scripts in this repository is tested automatically by Travis CI.  
 The files [**.travis.yml**](.travis.yml) and [**requirements.txt**](requirements.txt) at the root of this repository are used for this.  
 
 Here's the last build status
