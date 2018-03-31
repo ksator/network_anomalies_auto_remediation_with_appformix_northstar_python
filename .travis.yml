@@ -12,8 +12,8 @@ install:
   - pip install -r requirements.txt
 
 script:
-  - python render_devices.py
-  - python -m py_compile configure_snmp.py
+  - python network_devices.py
+  - python -m py_compile snmp.py
   - python -m py_compile telemetry.py
   - python -m py_compile webhook_listener.py
   - python -m py_compile northstar_rest_calls.py
