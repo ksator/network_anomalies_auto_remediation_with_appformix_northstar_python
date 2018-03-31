@@ -102,7 +102,7 @@ cd appformix_demo_scripts
 vi devices.yml
 ```
 
-Execute the python script [**render_devices.py**](render_devices.py). It renders the template [**devices.j2**](devices.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**network_devices.json**](network_devices.json).  
+Execute the python script [**network_devices.py**](network_devices.py). It renders the template [**network_devices.j2**](network_devices.j2) using the variables [**network_devices.yml**](network_devices.yml). The rendered file is [**network_devices.json**](network_devices.json).  
 ```
 python render_devices.py
 more network_devices.json
@@ -131,7 +131,7 @@ ansible-playbook -i inventory appformix_standalone.yml
 ```
 ## Configure the network devices with the SNMP community used by Appformix
 
-You need to configure the network devices with the SNMP community used by Appformix. The script [**configure_snmp.py**](configure_snmp.py) renders the template [**snmp.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**snmp.conf**](snmp.conf). This file is then loaded and committed on all network devices used with SNMP monitoring.
+You need to configure the network devices with the SNMP community used by Appformix. The script [**snmp.py**](snmp.py) renders the template [**snmp.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**snmp.conf**](snmp.conf). This file is then loaded and committed on all network devices used with SNMP monitoring.
  
 ```
 python configure_snmp.py
@@ -187,7 +187,7 @@ lab@jedi-vmx-1-vcp>
 
 ```
 If Appformix has serveral ip addresses, and you want to configure the network devices to use a different IP address than the one configured by appformix for telemetry server, execute the python script [**telemetry.py**](telemetry.py). 
-The python script [**telemetry.py**](telemetry.py) renders the template [**telemetry.j2**](snmp.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**telemetry.conf**](telemetry.conf). This file is then loaded and committed on all network devices used with JTI telemetry.  
+The python script [**telemetry.py**](telemetry.py) renders the template [**telemetry.j2**](telemetry.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**telemetry.conf**](telemetry.conf). This file is then loaded and committed on all network devices used with JTI telemetry.  
 
 ```
 cd appformix_demo_scripts
