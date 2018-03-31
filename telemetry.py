@@ -3,7 +3,7 @@ from yaml import load
 from jnpr.junos import Device
 from jnpr.junos.utils.config import Config
 
-f=open('devices.yml', 'r')
+f=open('network_devices.yml', 'r')
 my_vars = load(f.read())
 f.close()
 
