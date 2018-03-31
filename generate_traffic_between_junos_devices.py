@@ -8,6 +8,6 @@ f.close()
 
 dev=Device(host="192.168.128.194", user=my_vars['jti']['username'], password=my_vars['jti']['password'])
 dev.open()
-test1=dev.rpc.ping(host="10.1.0.10", rapid=True, count='10000')
+test1=dev.rpc.ping(host="10.1.0.10", rapid=True, count='20000')
 #print etree.tostring(test1)
 dev.close()
