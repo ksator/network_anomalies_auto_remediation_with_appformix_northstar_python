@@ -75,7 +75,7 @@ sudo -s
 apt-get update
 apt-get upgrade
 apt-get install -y python-dev libxml2-dev python-pip libxslt1-dev build-essential libssl-dev libffi-dev git curl
-pip install junos-eznc wget requests ipaddress cryptography flask Gitpython
+pip install junos-eznc wget requests ipaddress cryptography flask Gitpython lxml
 ```
 
 This repository requires Northstar version 4 or above. 

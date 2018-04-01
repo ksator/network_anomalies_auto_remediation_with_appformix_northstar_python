@@ -6,3 +6,4 @@ ipaddress
 cryptography
 flask
 Gitpython
+lxml
