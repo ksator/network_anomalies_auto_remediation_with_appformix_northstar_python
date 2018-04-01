@@ -64,7 +64,7 @@ This repository uses the following main building blocks:
 Run these commands to clone this repository:
 ```
 sudo -s
-git clone https://github.com/ksator/appformix_demo_scripts.git 
+git clone https://github.com/ksator/event_driven_automation_with_appformix.git 
 ```
 
 ## Requirements to use this repository 
@@ -98,14 +98,14 @@ In order to configure AppFormix for network devices monitoring, here are the ste
 Here's how to manage the 'network devices json configuration file' with automation:  
 Define the list of devices you want to monitor using Appformix, and the details you want to collect from them:    
 ```
-cd appformix_demo_scripts
-vi devices.yml
+cd event_driven_automation_with_appformix
+vi configure_appformix/network_devices.yml
 ```
 
-Execute the python script [**network_devices.py**](network_devices.py). It renders the template [**network_devices.j2**](network_devices.j2) using the variables [**network_devices.yml**](network_devices.yml). The rendered file is [**network_devices.json**](network_devices.json).  
+Execute the python script [**network_devices.py**](configure_appformix/network_devices.py). It renders the template [**network_devices.j2**](configure_appformix/network_devices.j2) using the variables [**network_devices.yml**](configure_appformix/network_devices.yml). The rendered file is [**network_devices.json**](configure_appformix/network_devices.json).  
 ```
-python render_devices.py
-more network_devices.json
+python configure_appformix/network_devices.py
+more configure_appformix/network_devices.json
 ```
 
 From your appformix directory, update ```group_vars/all``` file: 
@@ -115,7 +115,7 @@ vi group_vars/all
 ```
 to make sure it contains this:
 ```
-network_device_file_name: /path_to_appformix_demo_scripts_directory/network_devices.json
+network_device_file_name: /path_to/network_devices.json
 appformix_network_device_monitoring_enabled: true
 appformix_jti_network_device_monitoring_enabled: true
 appformix_plugins:
@@ -131,15 +131,15 @@ ansible-playbook -i inventory appformix_standalone.yml
 ```
 ## Configure the network devices with the SNMP community used by Appformix
 
-You need to configure the network devices with the SNMP community used by Appformix. The script [**snmp.py**](snmp.py) renders the template [**snmp.j2**](snmp.j2) using the variables [**network_devices.yml**](network_devices.yml). The rendered file is [**snmp.conf**](snmp.conf). This file is then loaded and committed on all network devices used with SNMP monitoring.
+You need to configure the network devices with the SNMP community used by Appformix. The script [**snmp.py**](configure_junos/snmp.py) renders the template [**snmp.j2**](configure_junos/snmp.j2) using the variables [**network_devices.yml**](configure_junos/network_devices.yml). The rendered file is [**snmp.conf**](configure_junos/snmp.conf). This file is then loaded and committed on all network devices used with SNMP monitoring.
  
 ```
-python configure_snmp.py
+python configure_junos/snmp.py
 configured device 172.30.52.85 with snmp community public
 configured device 172.30.52.86 with snmp community public
 ```
 ```
-more snmp.conf
+more configure_junos/snmp.conf
 ```
 
 ## Network devices configuration for Appformix monitoring using telemetry
@@ -186,20 +186,20 @@ lab@jedi-vmx-1-vcp> show configuration | compare rollback 2
 lab@jedi-vmx-1-vcp>
 
 ```
-If Appformix has serveral ip addresses, and you want to configure the network devices to use a different IP address than the one configured by appformix for telemetry server, execute the python script [**telemetry.py**](telemetry.py). 
-The python script [**telemetry.py**](telemetry.py) renders the template [**telemetry.j2**](telemetry.j2) using the variables [**devices.yml**](devices.yml). The rendered file is [**telemetry.conf**](telemetry.conf). This file is then loaded and committed on all network devices used with JTI telemetry.  
+If Appformix has serveral ip addresses, and you want to configure the network devices to use a different IP address than the one configured by appformix for telemetry server, execute the python script [**telemetry.py**](configure_junos/telemetry.py). 
+The python script [**telemetry.py**](configure_junos/telemetry.py) renders the template [**telemetry.j2**](configure_junos/telemetry.j2) using the variables [**network_devices.yml**](configure_appformix/network_devices.yml). The rendered file is [**telemetry.conf**](configure_junos/telemetry.conf). This file is then loaded and committed on all network devices used with JTI telemetry.  
 
 ```
-cd appformix_demo_scripts
-vi devices.yml
+cd event_driven_automation_with_appformix
+configure_appformix/network_devices.yml
 ```
 ```
-python telemetry.py
+configure_junos/telemetry.py
 configured device 172.30.52.155 with telemetry server ip 192.168.1.100
 configured device 172.30.52.156 with telemetry server ip 192.168.1.100
 ```
 ```
-# more telemetry.conf
+# more configure_junos/telemetry.conf
 set services analytics streaming-server appformix-telemetry remote-address 192.168.1.100
 ```
 Verify on your network devices: 
@@ -231,11 +231,11 @@ Appformix supports webhooks. A notification is generated when the condition of a
 
 The script [**webhook_listener.py**](webhook_listener.py) listens to webhooks and binds a function to each URL.   
 
-- It binds the webhook http://x.x.x.x:12345/northstar/put_device_in_maintenance (POST with JSON Body) sent by appformix to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
+- It binds the webhook ```http://x.x.x.x:12345/northstar/put_device_in_maintenance``` (POST with JSON Body) sent by appformix to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
 The device name is extracted from the JSON body and passed as an argument to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
 The script [**northstar_rest_calls.py**](northstar_rest_calls.py) then makes rest calls to Northstar SDN controler to put this device in maintenance mode.  
 During a maintenance event, the selected devices are considered logically down, and the system reroutes the LSPs around those devices during the maintenance period. After the maintenance event is completed, the LSPs are reverted back to optimal paths.  
-- It binds the webhook http://x.x.x.x:12345/junos/collect_data (POST with JSON body) from appformix to the script [**push_to_git.py**](push_to_git.py).  
+- It binds the webhook ```http://x.x.x.x:12345/junos/collect_data``` (POST with JSON body) from appformix to the script [**push_to_git.py**](push_to_git.py).  
 The device name is extracted from the JSON body and passed as an argument to the script [**push_to_git.py**](push_to_git.py).  
 The script [**push_to_git.py**](push_to_git.py) then collects data on this junos devices (junos show commands output) and upload the data collected to a Git server.  
 
