@@ -271,19 +271,14 @@ Here's the output of [**webhook_listener.py**](webhook_listener.py) for this web
 ```
 The data is automatically collected from the faulty device and saved to the local repository:
 ```
-# ls vmx104/
+# ls data_collected/vmx104/
 show chassis hardware.txt  show interfaces extensive.txt  show version.txt
 ```
 The data collected is then pushed automatically on the remote repository:  
 ```
 # git log -1
-commit 38f0162a8d45419a3390d0805e43d7fe6dad4aa4
-Author: ksator <ksator@juniper.net>
-Date:   Tue Mar 27 13:11:16 2018 -0700
-
-    from Gitpython
 ```
-So the data collected is available on the remote repository: [**vmx104**](vmx104)  
+So the data collected is available on the remote repository: [**vmx104**](data_collected/vmx104)  
 
 ### Example with the webhook ```http://webhook_listener_ip:12345/northstar/put_device_in_maintenance```
 
