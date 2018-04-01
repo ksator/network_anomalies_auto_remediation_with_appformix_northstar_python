@@ -18,8 +18,8 @@ script:
   - python -m py_compile webhook_listener.py
   - python -m py_compile northstar_rest_calls.py
   - python -m py_compile push_to_git.py
-  - python -m py_compile junos_devices.py
-  - python -m py_complile trigger_alarms/generate_traffic.py
+  - python -m py_compile junos.py
+  - python -m py_compile trigger_alarms/generate_traffic.py
 
 
 branches:
