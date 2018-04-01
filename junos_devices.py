@@ -22,7 +22,7 @@ def collect_junos_commands(dev):
     commands = ["show version", "show chassis hardware", "show interfaces extensive"]
     for item in commands:
         cli = device.cli(item, warning=False)
-        f = open(dev +'/'+ item + '.txt', 'w')
+        f = open('data_collected/+ 'dev +'/'+ item + '.txt', 'w')
         f.write(cli)
         f.close()
     device.close()
