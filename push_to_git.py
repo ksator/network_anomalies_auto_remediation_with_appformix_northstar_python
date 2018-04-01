@@ -7,7 +7,7 @@ def collect_and_push(dev):
     repo = git.Repo(cwd)
     repo.git.pull('origin', 'master')
     junos_devices.collect_junos_commands(dev)
-    print repo.git.add(dev + "/.")
+    print repo.git.add("data_collected/" + dev + "/.")
     repo.git.commit(m = "from Gitpython")
     repo.git.push('origin', 'master')
     return "done"
