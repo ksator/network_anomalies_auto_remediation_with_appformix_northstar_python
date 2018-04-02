@@ -74,10 +74,10 @@ git clone https://github.com/ksator/event_driven_automation_with_appformix.git
 Run these commands to install the python library junos-eznc (also know as PyEZ) and its dependencies.
 ```
 sudo -s
-apt-get update
-apt-get upgrade
+cd event_driven_automation_with_appformix
+apt-get update && apt-get upgrade
 apt-get install -y python-dev libxml2-dev python-pip libxslt1-dev build-essential libssl-dev libffi-dev git curl
-pip install junos-eznc wget requests ipaddress cryptography flask Gitpython lxml
+pip install -r requirements.txt
 ```
 
 This repository requires Northstar version 4 or above. 
