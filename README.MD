@@ -16,7 +16,7 @@
 ## About this repo
 
 This repository has scripts to quickly demo network devices monitoring using Appformix.   
-![appformix_network_devices_monitoring.png](appformix_network_devices_monitoring.png)  
+![appformix_network_devices_monitoring.png](resources/appformix_network_devices_monitoring.png)  
 
 It has also scripts to demo event driven automation leveraging Appformix. The event driven automation demos are: 
 - Based on Appformix webhook notifications, automatically collect additional data from the "faulty" device and automatically upload the data collected on a Git server  
