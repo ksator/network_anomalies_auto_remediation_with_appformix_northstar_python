@@ -258,7 +258,7 @@ Start the listener [**webhook_listener.py**](webhook_listener.py):
  * Debugger PIN: 290-737-301
 ```
 
-Have Appformix to generate a notification (webhook).  
+Have Appformix to generate a webhook notification. You can use the scripts in the [**trigger_alarms**](trigger_alarms) directory.  
 
 The python script [**webhook_listener.py**](webhook_listener.py) will receive HTTP POST and bind them to other python functions.  
 
