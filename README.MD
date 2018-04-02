@@ -6,7 +6,7 @@
 [**Clone this repository**](README.MD#clone-this-repository)  
 [**Configure Appformix to add network devices to monitor**](README.MD#configure-appformix-to-add-network-devices-to-monitor)  
 [**Configure the network devices with the SNMP community used by Appformix**](README.MD#configure-the-network-devices-with-the-snmp-community-used-by-appformix)  
-[**Network devices configuration for Appformix monitoring using telemetry**](README.MD#network-devices-configuration-for-appformix-monitoring-using-telemetry)  
+[**Configure the network devices for JTI telemetry**](README.MD#configure-the-network-devices-for-jti-telemetry)  
 [**Webhooks**](README.MD#webhooks)  
 [**Event driven automation**](README.MD#event-driven-automation)  
 [**More details to reproduce the event driven automation demos**](README.MD#more-details-to-reproduce-the-event-driven-automation-demos)  
@@ -27,6 +27,7 @@ Here are more details about the automation content available in this repository.
 - Add network devices to Appformix
 - Configure the network devices with the SNMP community used by Appformix to monitor them
 - Modify the IP address configured by Appformix for telemetry on the network devices
+- Trigger Appformix alarms  
 - Listen to the webhooks notifications sent by Appformix
 - React to the webhooks notifications sent by Appformix (event driven automation). The reactions triggered automatically are python scripts to:   
    - collect additional data on the "faulty" device and upload them on a Git server  
@@ -44,7 +45,7 @@ This repository uses the following main building blocks:
 - Northstar SDN controller. 
   - Version 4 or above is required.   
 - Appformix 
-  - To collect data (SNMP and JTI streaming telemetry) from Junos devices. 
+  - To collect data (using SNMP and JTI streaming telemetry) from Junos devices. 
   - To generate webhooks notifications. 
   - OpenNTI can be used as an alternative to Appformix to collect data from Junos devices and generate webhooks notifications to external
   systems.    
@@ -55,6 +56,7 @@ This repository uses the following main building blocks:
   - Passes the data extracted from the webhooks to the mapped python function
   - Executes the mapped python function. 
   - SaltStack can be used as a better alternative to this webhook listener. 
+- Python scripts to trigger Appformix alarms  
 - Python scripts triggered automatically by the webhook listener:
   - To make actions against Northstar
   - To make actions against Junos devices and a Git server
@@ -142,7 +144,7 @@ configured device 172.30.52.86 with snmp community public
 more configure_junos/snmp.conf
 ```
 
-## Network devices configuration for Appformix monitoring using telemetry
+## Configure the network devices for JTI telemetry
 
 For JTI streaming telemetry, Appformix uses NETCONF to automatically configure the network devices:  
 ```
