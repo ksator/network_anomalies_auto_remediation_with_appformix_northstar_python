@@ -2,7 +2,7 @@ from jnpr.junos import Device
 from lxml import etree
 from yaml import load
 
-f=open('devices.yml', 'r')
+f=open('configure_appformix/network_devices.yml', 'r')
 my_vars = load(f.read())
 f.close()
 
