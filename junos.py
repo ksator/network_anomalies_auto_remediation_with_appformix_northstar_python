@@ -2,6 +2,17 @@ from jnpr.junos import Device
 from jnpr.junos.utils.config import Config
 import os
 from yaml import load
+import json 
+from pprint import pprint 
+
+#def get_management_ip(dev):
+#    f = open(configure_appformix/network_device.json, 'r')
+#    data = json.loads(f.read())
+#    f.close()
+#    for i in data['NetworkDeviceList']:
+#        if i['NetworkDevice']['Name'] == dev:
+#            management_ip = i['NetworkDevice']['ManagementIp']
+#    return dev_ip
 
 def collect_junos_commands(dev):
     if not os.path.exists('data_collected/' + dev):
