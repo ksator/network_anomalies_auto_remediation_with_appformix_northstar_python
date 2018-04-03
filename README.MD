@@ -277,6 +277,9 @@ show chassis hardware.txt  show interfaces extensive.txt  show version.txt
 ```
 The data collected is then pushed automatically on the remote repository:  
 ```
+# git status
+```
+```
 # git log -1
 ```
 So the data collected is available on the remote repository: [**vmx104**](data_collected/vmx104)  
