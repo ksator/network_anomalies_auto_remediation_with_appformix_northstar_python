@@ -9,7 +9,7 @@
 [**Configure the network devices for JTI telemetry**](README.MD#configure-the-network-devices-for-jti-telemetry)  
 [**Webhooks**](README.MD#webhooks)  
 [**Event driven automation**](README.MD#event-driven-automation)  
-[**How to reproduce the event driven automation demos**](README.MD#how-to-reproduce-the-event-driven-automation-demos) 
+[**How to reproduce the event driven automation demos**](README.MD#how-to-reproduce-the-event-driven-automation-demos)  
 [**Automated data collection demo**](README.MD#automated-data-collection-demo)  
 [**Unplanned maintenance operations demo**](README.MD#unplanned-maintenance-operations-demo)  
 [**Continuous integration with Travis CI**](README.MD#continuous-integration-with-travis-ci)  
