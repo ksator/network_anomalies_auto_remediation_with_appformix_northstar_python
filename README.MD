@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ksator/event_driven_automation_with_appformix.svg?branch=master)](https://travis-ci.org/ksator/event_driven_automation_with_appformix)
+[![Build Status](https://travis-ci.org/ksator/event_driven_network_automation_leveraging_appformix.svg?branch=master)](https://travis-ci.org/ksator/event_driven_network_automation_leveraging_appformix)  
 
 ## Documentation structure
 [**About this repo**](README.MD#about-this-repo)  
@@ -69,7 +69,7 @@ This repository uses the following main building blocks:
 Run these commands to clone this repository:
 ```
 sudo -s
-git clone https://github.com/ksator/event_driven_automation_with_appformix.git 
+git clone https://github.com/ksator/event_driven_network_automation_leveraging_appformix.git 
 ```
 
 ## Requirements to use this repository 
@@ -77,7 +77,7 @@ git clone https://github.com/ksator/event_driven_automation_with_appformix.git
 Run these commands to install the python library junos-eznc (also know as PyEZ) and its dependencies.
 ```
 sudo -s
-cd event_driven_automation_with_appformix
+cd event_driven_network_automation_leveraging_appformix
 apt-get update && apt-get upgrade
 apt-get install -y python-dev libxml2-dev python-pip libxslt1-dev build-essential libssl-dev libffi-dev git curl
 pip install -r requirements.txt
@@ -103,7 +103,7 @@ In order to configure AppFormix for network devices monitoring, here are the ste
 Here's how to manage the 'network devices json configuration file' with automation:  
 Define the list of devices you want to monitor using Appformix, and the details you want to collect from them:    
 ```
-cd event_driven_automation_with_appformix
+cd event_driven_network_automation_leveraging_appformix
 vi configure_appformix/network_devices.yml
 ```
 
@@ -302,8 +302,8 @@ There is a github webhook with Travis CI
 The syntax of the python scripts in this repository is tested automatically by Travis CI.  
 The files [**.travis.yml**](.travis.yml) and [**requirements.txt**](requirements.txt) at the root of this repository are used for this.  
 
-Here's the last build status
-[![Build Status](https://travis-ci.org/ksator/event_driven_automation_with_appformix.svg?branch=master)](https://travis-ci.org/ksator/event_driven_automation_with_appformix)
+Here's the last build status  
+[![Build Status](https://travis-ci.org/ksator/event_driven_network_automation_leveraging_appformix.svg?branch=master)](https://travis-ci.org/ksator/event_driven_network_automation_leveraging_appformix)  
 
 ## Looking for more automation solutions
 
