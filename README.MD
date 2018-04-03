@@ -9,7 +9,9 @@
 [**Configure the network devices for JTI telemetry**](README.MD#configure-the-network-devices-for-jti-telemetry)  
 [**Webhooks**](README.MD#webhooks)  
 [**Event driven automation**](README.MD#event-driven-automation)  
-[**More details to reproduce the event driven automation demos**](README.MD#more-details-to-reproduce-the-event-driven-automation-demos)  
+[**How to reproduce the event driven automation demos**](README.MD#how-to-reproduce-the-event-driven-automation-demos) 
+[**Automated data collection demo**](README.MD#automated-data-collection-demo)  
+[**Unplanned maintenance operations demo**](README.MD#unplanned-maintenance-operations-demo)  
 [**Continuous integration with Travis CI**](README.MD#continuous-integration-with-travis-ci)  
 [**Looking for more automation solutions**](README.MD#looking-for-more-automation-solutions)  
 
@@ -242,7 +244,7 @@ During a maintenance event, the selected devices are considered logically down, 
 The device name is extracted from the JSON body and passed as an argument to the script [**push_to_git.py**](push_to_git.py).  
 The script [**push_to_git.py**](push_to_git.py) then collects data on this junos devices (junos show commands output) and upload the data collected to a Git server.  
 
-## More details to reproduce the event driven automation demos
+## How to reproduce the event driven automation demos
 
 Define webhooks on Appformix.  
 From the GUI, select: ```settings```, ```notification settings```, ```notification services```, ```add service``` (provide a service name and a service endpoint), ```setup```.  
@@ -263,7 +265,7 @@ Have Appformix to generate a webhook notification. You can use the scripts in th
 
 The python script [**webhook_listener.py**](webhook_listener.py) will receive HTTP POST and bind them to other python functions.  
 
-### Automated data collection
+## Automated data collection demo
 
 The script [**webhook_listener.py**](webhook_listener.py) binds the Webhook ```http://webhook_listener_ip:12345/junos/collect_data``` to the script [**push_to_git.py**](push_to_git.py).  
 The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and passes it to the script [**push_to_git.py**](push_to_git.py).  
@@ -283,7 +285,7 @@ The data collected is then pushed automatically on the remote repository:
 ```
 So the data collected is available on the remote repository: [**vmx104**](data_collected/vmx104)  
 
-### Unplanned maintenance operations
+## Unplanned maintenance operations demo
 
 The script [**webhook_listener.py**](webhook_listener.py) binds the webhook ```http://webhook_listener_ip:12345/northstar/put_device_in_maintenance``` to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
 The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and pass it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
