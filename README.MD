@@ -292,6 +292,9 @@ Here's the output of [**webhook_listener.py**](webhook_listener.py) for this web
 172.18.0.5 - - [28/Mar/2018 04:51:29] "POST /northstar/put_device_in_maintenance HTTP/1.1" 201 -
 ```
 
+The "faulty" device is now in maintenance mode. Northstar GUI: 
+![maintenance.png](resources/maintenance.png)  
+
 ## Continuous integration with Travis CI
 
 There is a github webhook with Travis CI  
