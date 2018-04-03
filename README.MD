@@ -224,11 +224,7 @@ lab@jedi-vmx-1-vcp> show system commit
 
 ## Webhooks
 
-### What is it?
-
 A webhook is notification using an HTTP POST. A webhook is sent by a system A to push data (json body as example) to a system B when an event occurred in the system A. Then the system B will decide what to do with these details. Usage is event driven automation.   
-
-### Appformix webhooks
 
 Appformix supports webhooks. A notification is generated when the condition of an alarm is observed. You can configure an alarm to post notifications to an external HTTP endpoint. AppFormix will post a JSON payload to the endpoint for each notification.  
 
