@@ -263,9 +263,9 @@ Have Appformix to generate a webhook notification. You can use the scripts in th
 
 The python script [**webhook_listener.py**](webhook_listener.py) will receive HTTP POST and bind them to other python functions.  
 
-### Example with the webhook ```http://webhook_listener_ip:12345/junos/collect_data```
+### Automated data collection
 
-The script [**webhook_listener.py**](webhook_listener.py) binds it to the script [**push_to_git.py**](push_to_git.py).  
+The script [**webhook_listener.py**](webhook_listener.py) binds the Webhook ```http://webhook_listener_ip:12345/junos/collect_data``` to the script [**push_to_git.py**](push_to_git.py).  
 The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and passes it to the script [**push_to_git.py**](push_to_git.py).  
 The script [**push_to_git.py**](push_to_git.py) collect junos show commands on the faulty device (the one notified by Appformix) and pushes the data collected to a Git server.   
 Here's the output of [**webhook_listener.py**](webhook_listener.py) for this webhook 
@@ -283,9 +283,9 @@ The data collected is then pushed automatically on the remote repository:
 ```
 So the data collected is available on the remote repository: [**vmx104**](data_collected/vmx104)  
 
-### Example with the webhook ```http://webhook_listener_ip:12345/northstar/put_device_in_maintenance```
+### Unplanned maintenance operations
 
-The script [**webhook_listener.py**](webhook_listener.py) binds it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
+The script [**webhook_listener.py**](webhook_listener.py) binds the webhook ```http://webhook_listener_ip:12345/northstar/put_device_in_maintenance``` to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
 The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and pass it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
 The script [**northstar_rest_calls.py**](northstar_rest_calls.py) makes rest calls to Northstar SDN controller to put this device (the one notified by Appformix) in maintenance mode.  
 During the maintenance event, this device will be considered logically down, and Northstar will reroute the LSPs around this device during the maintenance period. After the maintenance event is completed, the LSPs will be reverted back to optimal paths.  
