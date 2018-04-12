@@ -223,7 +223,40 @@ lab@jedi-vmx-1-vcp> show system commit
 0   2018-03-23 00:34:47 UTC by lab via netconf
 
 ```
+```
+lab@jedi-vmx-1-vcp> show agent sensors
 
+Sensor Information :
+
+    Name                                    : Interface_Sensor
+    Resource                                : /junos/system/linecard/interface/
+    Version                                 : 1.1
+    Sensor-id                               : 150000323
+    Subscription-ID                         : 562950103421635
+    Parent-Sensor-Name                      : Not applicable
+    Component(s)                            : PFE
+
+    Server Information :
+
+        Name                                : appformix-telemetry
+        Scope-id                            : 0
+        Remote-Address                      : 192.168.1.100
+        Remote-port                         : 42596
+        Transport-protocol                  : UDP
+
+    Profile Information :
+
+        Name                                : appformix
+        Reporting-interval                  : 60
+        Payload-size                        : 5000
+        Address                             : 192.168.1.1
+        Port                                : 21112
+        Timestamp                           : 1
+        Format                              : GPB
+        DSCP                                : 20
+        Forwarding-class                    : 255
+
+```
 ## Webhooks
 
 A webhook is notification using an HTTP POST. A webhook is sent by a system A to push data (json body as example) to a system B when an event occurred in the system A. Then the system B will decide what to do with these details. Usage is event driven automation.   
