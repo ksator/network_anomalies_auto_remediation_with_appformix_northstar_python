@@ -187,8 +187,12 @@ lab@jedi-vmx-1-vcp> show configuration | compare rollback 2
 +  }
 
 lab@jedi-vmx-1-vcp>
-
 ```
+Run this command to show the installed sensors: 
+```
+lab@jedi-vmx-1-vcp> show agent sensors
+```
+
 If Appformix has serveral ip addresses, and you want to configure the network devices to use a different IP address than the one configured by appformix for telemetry server, execute the python script [**telemetry.py**](configure_junos/telemetry.py). 
 The python script [**telemetry.py**](configure_junos/telemetry.py) renders the template [**telemetry.j2**](configure_junos/telemetry.j2) using the variables [**network_devices.yml**](configure_appformix/network_devices.yml). The rendered file is [**telemetry.conf**](configure_junos/telemetry.conf). This file is then loaded and committed on all network devices used with JTI telemetry.  
 
