@@ -85,7 +85,7 @@ This repository requires Northstar version 4 or above.
 
 ## Configure Appformix to add network devices to monitor
 
-Appformix supports network devices monitoring using SNMP and JTI (Juniper Telemetry Interface) streaming telemetry.  
+Appformix supports network devices monitoring using SNMP and JTI (Juniper Telemetry Interface) native streaming telemetry.  
 - For SNMP, the polling interval is 60s.  
 - For JTI streaming telemetry, Appformix automatically configures the network devices. The interval configured on network devices is 60s.  
 
