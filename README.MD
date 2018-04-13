@@ -198,7 +198,7 @@ The python script [**telemetry.py**](configure_junos/telemetry.py) renders the t
 
 ```
 cd event_driven_automation_with_appformix
-configure_appformix/network_devices.yml
+more configure_appformix/network_devices.yml
 ```
 ```
 configure_junos/telemetry.py
