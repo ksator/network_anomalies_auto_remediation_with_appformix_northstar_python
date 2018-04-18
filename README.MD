@@ -93,7 +93,7 @@ In order to configure AppFormix for network devices monitoring, here are the ste
 Here's how to manage the 'network devices json configuration file' with automation:  
 Define the list of devices you want to monitor using Appformix, and the details you want to collect from them:    
 ```
-cd event_driven_network_automation_leveraging_appformix
+cd appformix_northstar_python_event_driven_device_maintenance
 vi configure_appformix/network_devices.yml
 ```
 
@@ -189,7 +189,7 @@ If Appformix has serveral ip addresses, and you want to configure the network de
 The python script [**telemetry.py**](configure_junos/telemetry.py) renders the template [**telemetry.j2**](configure_junos/telemetry.j2) using the variables [**network_devices.yml**](configure_appformix/network_devices.yml). The rendered file is [**telemetry.conf**](configure_junos/telemetry.conf). This file is then loaded and committed on all network devices used with JTI telemetry.  
 
 ```
-cd event_driven_automation_with_appformix
+cd appformix_northstar_python_event_driven_device_maintenance
 more configure_appformix/network_devices.yml
 ```
 ```
