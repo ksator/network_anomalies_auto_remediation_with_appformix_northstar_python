@@ -10,7 +10,6 @@
 [**Webhooks**](README.MD#webhooks)  
 [**Event driven automation**](README.MD#event-driven-automation)  
 [**How to reproduce the event driven automation demos**](README.MD#how-to-reproduce-the-event-driven-automation-demos)  
-[**Automated data collection demo**](README.MD#automated-data-collection-demo)  
 [**Unplanned maintenance operations demo**](README.MD#unplanned-maintenance-operations-demo)  
 [**Continuous integration with Travis CI**](README.MD#continuous-integration-with-travis-ci)  
 [**Looking for more automation solutions**](README.MD#looking-for-more-automation-solutions)  
@@ -20,12 +19,9 @@
 This repository has scripts to quickly demo network devices monitoring using Appformix.   
 ![appformix_network_devices_monitoring.png](resources/appformix_network_devices_monitoring.png)  
 
-It has also scripts to demo event driven automation leveraging Appformix. The event driven automation demos are: 
-- Based on Appformix webhook notifications, automatically collect additional data from the "faulty" device and automatically upload the data collected on a Git server  
-![automated-data-collection.png](resources/automated-data-collection.png)  
-- Based on Appformix webhook notifications, automatically make REST calls to Northstar SDN controller to put the "faulty" device in maintenance mode. The "faulty" device will be considered logically down for a certain amount time, and the SDN controller will reroute the LSPs around this device during the maintenance period. After the maintenance period, LSPs are reverted back to optimal paths. This [**video**](https://www.youtube.com/watch?v=qM4sJtCLk8o&feature=youtu.be) and this [**article**](https://forums.juniper.net/t5/Industry-Solutions-and-Trends/Enabling-rapid-remediation-in-the-Self-Driving-Network/ba-p/321375) are about similar demos.  
+It has also scripts to demo event driven automation leveraging Appformix.  
+Based on Appformix webhook notifications, automatically makes REST calls to Northstar SDN controller to put the "faulty" device in maintenance mode. The "faulty" device will be considered logically down for a certain amount time, and the SDN controller will reroute the LSPs around this device during the maintenance period. After the maintenance period, LSPs are reverted back to optimal paths. This [**video**](https://www.youtube.com/watch?v=qM4sJtCLk8o&feature=youtu.be) and this [**article**](https://forums.juniper.net/t5/Industry-Solutions-and-Trends/Enabling-rapid-remediation-in-the-Self-Driving-Network/ba-p/321375) are about similar demos.  
 ![unplanned-maintenance-operations.png](resources/unplanned-maintenance-operations.png)  
-
 
 Here are more details about the automation content available in this repository. It has automation content to:  
 - Add network devices to Appformix
@@ -33,9 +29,7 @@ Here are more details about the automation content available in this repository.
 - Modify the IP address configured by Appformix for telemetry on the network devices
 - Trigger Appformix alarms  
 - Listen to the webhooks notifications sent by Appformix
-- React to the webhooks notifications sent by Appformix (event driven automation). The reactions triggered automatically are python scripts to:   
-   - collect additional data on the "faulty" device and upload them on a Git server  
-   - make REST calls to Northstar SDN controller to put the "faulty" device in maintenance mode. 
+- React to the webhooks notifications sent by Appformix (event driven automation). The reactions triggered automatically are python scripts to make REST calls to Northstar SDN controller to put the "faulty" device in maintenance mode. 
 
 I am using them with an Appformix standalone setup running version 2.15.2 installed on Ubuntu 16.04
 
@@ -58,16 +52,14 @@ This repository uses the following main building blocks:
   - Passes the data extracted from the webhooks to the mapped python function
   - Executes the mapped python function. 
 - Python scripts to trigger Appformix alarms  
-- Python scripts triggered automatically by the webhook listener:
-  - To make actions against Northstar
-  - To make actions against Junos devices and a Git server
+- Python scripts triggered automatically by the webhook listener to make actions against Northstar
  
 ## Clone this repository
 
 Run these commands to clone this repository:
 ```
 sudo -s
-git clone https://github.com/ksator/event_driven_network_automation_leveraging_appformix.git 
+git clone https://github.com/ksator/appformix_northstar_python_event_driven_device_maintenance.git 
 ```
 
 ## Requirements to use this repository 
@@ -75,7 +67,7 @@ git clone https://github.com/ksator/event_driven_network_automation_leveraging_a
 Run these commands to install the python library junos-eznc (also know as PyEZ) and its dependencies.
 ```
 sudo -s
-cd event_driven_network_automation_leveraging_appformix
+cd appformix_northstar_python_event_driven_device_maintenance
 apt-get update && apt-get upgrade
 apt-get install -y python-dev libxml2-dev python-pip libxslt1-dev build-essential libssl-dev libffi-dev git curl
 pip install -r requirements.txt
