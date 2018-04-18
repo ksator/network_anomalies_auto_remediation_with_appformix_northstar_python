@@ -141,12 +141,12 @@ more configure_junos/snmp.conf
 
 For JTI streaming telemetry, Appformix uses NETCONF to automatically configure the network devices:  
 ```
-lab@jedi-vmx-1-vcp> show system commit
+lab@vmx-1-vcp> show system commit
 0   2018-03-22 16:32:37 UTC by lab via netconf
 1   2018-03-22 16:32:33 UTC by lab via netconf
 ```
 ```
-lab@jedi-vmx-1-vcp> show configuration | compare rollback 1
+lab@vmx-1-vcp> show configuration | compare rollback 1
 [edit services analytics]
 +    sensor Interface_Sensor {
 +        server-name appformix-telemetry;
@@ -154,7 +154,7 @@ lab@jedi-vmx-1-vcp> show configuration | compare rollback 1
 +        resource /junos/system/linecard/interface/;
 +    }
 
-lab@jedi-vmx-1-vcp> show configuration | compare rollback 2
+lab@vmx-1-vcp> show configuration | compare rollback 2
 [edit]
 +  services {
 +      analytics {
@@ -178,11 +178,11 @@ lab@jedi-vmx-1-vcp> show configuration | compare rollback 2
 +      }
 +  }
 
-lab@jedi-vmx-1-vcp>
+lab@vmx-1-vcp>
 ```
 Run this command to show the installed sensors: 
 ```
-lab@jedi-vmx-1-vcp> show agent sensors
+lab@vmx-1-vcp> show agent sensors
 ```
 
 If Appformix has serveral ip addresses, and you want to configure the network devices to use a different IP address than the one configured by appformix for telemetry server, execute the python script [**telemetry.py**](configure_junos/telemetry.py). 
@@ -203,20 +203,20 @@ set services analytics streaming-server appformix-telemetry remote-address 192.1
 ```
 Verify on your network devices: 
 ```
-lab@jedi-vmx-1-vcp> show configuration services analytics streaming-server appformix-telemetry remote-address
+lab@vmx-1-vcp> show configuration services analytics streaming-server appformix-telemetry remote-address
 remote-address 192.168.1.100;
 
-lab@jedi-vmx-1-vcp> show configuration | compare rollback 1
+lab@vmx-1-vcp> show configuration | compare rollback 1
 [edit services analytics streaming-server appformix-telemetry]
 -    remote-address 172.30.52.157;
 +    remote-address 192.168.1.100;
 
-lab@jedi-vmx-1-vcp> show system commit
+lab@vmx-1-vcp> show system commit
 0   2018-03-23 00:34:47 UTC by lab via netconf
 
 ```
 ```
-lab@jedi-vmx-1-vcp> show agent sensors
+lab@vmx-1-vcp> show agent sensors
 
 Sensor Information :
 
