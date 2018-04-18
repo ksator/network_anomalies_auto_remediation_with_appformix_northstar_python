@@ -281,12 +281,11 @@ Start the listener [**webhook_listener.py**](webhook_listener.py):
  * Debugger PIN: 290-737-301
 ```
 
-Have Appformix to generate a webhook notification. You can use the scripts in the [**trigger_alarms**](trigger_alarms) directory.  
-
-The python script [**webhook_listener.py**](webhook_listener.py) will receive HTTP POST and bind them to other python functions.  
-
 ## Unplanned maintenance operations demo
 
+Have Appformix to generate a webhook notification. You can use the scripts in the [**trigger_alarms**](trigger_alarms) directory.  
+
+The python script [**webhook_listener.py**](webhook_listener.py) will receive HTTP POST and bind them to other python functions.   
 The script [**webhook_listener.py**](webhook_listener.py) binds the webhook ```http://webhook_listener_ip:12345/northstar/put_device_in_maintenance``` to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
 The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and pass it to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
 The script [**northstar_rest_calls.py**](northstar_rest_calls.py) makes rest calls to Northstar SDN controller to put this device (the one notified by Appformix) in maintenance mode.  
