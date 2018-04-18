@@ -6,10 +6,10 @@
 [**Clone this repository**](README.MD#clone-this-repository)  
 [**Configure Appformix to add network devices to monitor**](README.MD#configure-appformix-to-add-network-devices-to-monitor)  
 [**Configure the network devices with the SNMP community used by Appformix**](README.MD#configure-the-network-devices-with-the-snmp-community-used-by-appformix)  
-[**Configure the network devices for JTI telemetry**](README.MD#configure-the-network-devices-for-jti-telemetry)  
+[**Configure the network devices for JTI native telemetry**](README.MD#configure-the-network-devices-for-jti-native-telemetry)  
 [**Webhooks**](README.MD#webhooks)  
 [**Event driven automation**](README.MD#event-driven-automation)  
-[**How to reproduce the event driven automation demos**](README.MD#how-to-reproduce-the-event-driven-automation-demos)  
+[**How to reproduce the event driven automation demo**](README.MD#how-to-reproduce-the-event-driven-automation-demo)  
 [**Unplanned maintenance operations demo**](README.MD#unplanned-maintenance-operations-demo)  
 [**Continuous integration with Travis CI**](README.MD#continuous-integration-with-travis-ci)  
 [**Looking for more automation solutions**](README.MD#looking-for-more-automation-solutions)  
@@ -43,7 +43,7 @@ This repository uses the following main building blocks:
 - Northstar SDN controller. 
   - Version 4 or above is required.   
 - Appformix 
-  - To collect data (using SNMP and JTI streaming telemetry) from Junos devices. 
+  - To collect data (using SNMP and JTI native streaming telemetry) from Junos devices. 
   - To generate webhooks notifications. 
 - A webhook listener. This is a python script that: 
   - Listens to webhooks
@@ -79,7 +79,7 @@ This repository requires Northstar version 4 or above.
 
 Appformix supports network devices monitoring using SNMP and JTI (Juniper Telemetry Interface) native streaming telemetry.  
 - For SNMP, the polling interval is 60s.  
-- For JTI streaming telemetry, Appformix automatically configures the network devices. The interval configured on network devices is 60s.  
+- For JTI native streaming telemetry, Appformix automatically configures the network devices. The interval configured on network devices is 60s.  
 
 Here's the [**documentation**](https://www.juniper.net/documentation/en_US/appformix/topics/concept/appformix-ansible-configure-network-device.html)  
 
@@ -137,7 +137,7 @@ configured device 172.30.52.86 with snmp community public
 more configure_junos/snmp.conf
 ```
 
-## Configure the network devices for JTI telemetry
+## Configure the network devices for JTI native telemetry
 
 For JTI streaming telemetry, Appformix uses NETCONF to automatically configure the network devices:  
 ```
@@ -259,15 +259,12 @@ Appformix supports webhooks. A notification is generated when the condition of a
 
 The script [**webhook_listener.py**](webhook_listener.py) listens to webhooks and binds a function to each URL.   
 
-- It binds the webhook ```http://x.x.x.x:12345/northstar/put_device_in_maintenance``` (POST with JSON Body) sent by appformix to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
+It binds the webhook ```http://x.x.x.x:12345/northstar/put_device_in_maintenance``` (POST with JSON Body) sent by appformix to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
 The device name is extracted from the JSON body and passed as an argument to the script [**northstar_rest_calls.py**](northstar_rest_calls.py).  
 The script [**northstar_rest_calls.py**](northstar_rest_calls.py) then makes rest calls to Northstar SDN controler to put this device in maintenance mode.  
 During a maintenance event, the selected devices are considered logically down, and the system reroutes the LSPs around those devices during the maintenance period. After the maintenance event is completed, the LSPs are reverted back to optimal paths.  
-- It binds the webhook ```http://x.x.x.x:12345/junos/collect_data``` (POST with JSON body) from appformix to the script [**push_to_git.py**](push_to_git.py).  
-The device name is extracted from the JSON body and passed as an argument to the script [**push_to_git.py**](push_to_git.py).  
-The script [**push_to_git.py**](push_to_git.py) then collects data on this junos devices (junos show commands output) and upload the data collected to a Git server.  
 
-## How to reproduce the event driven automation demos
+## How to reproduce the event driven automation demo
 
 Define webhooks on Appformix.  
 From the GUI, select: ```settings```, ```notification settings```, ```notification services```, ```add service``` (provide a service name and a service endpoint), ```setup```.  
@@ -287,29 +284,6 @@ Start the listener [**webhook_listener.py**](webhook_listener.py):
 Have Appformix to generate a webhook notification. You can use the scripts in the [**trigger_alarms**](trigger_alarms) directory.  
 
 The python script [**webhook_listener.py**](webhook_listener.py) will receive HTTP POST and bind them to other python functions.  
-
-## Automated data collection demo
-
-The script [**webhook_listener.py**](webhook_listener.py) binds the Webhook ```http://webhook_listener_ip:12345/junos/collect_data``` to the script [**push_to_git.py**](push_to_git.py).  
-The script [**webhook_listener.py**](webhook_listener.py) also extracts the device name from the JSON body and passes it to the script [**push_to_git.py**](push_to_git.py).  
-The script [**push_to_git.py**](push_to_git.py) collect junos show commands on the faulty device (the one notified by Appformix) and pushes the data collected to a Git server.   
-Here's the output of [**webhook_listener.py**](webhook_listener.py) for this webhook 
-```
-172.18.0.5 - - [27/Mar/2018 13:11:30] "POST /junos/collect_data HTTP/1.1" 201 -
-```
-The data is automatically collected from the faulty device and saved to the local repository:
-```
-# ls data_collected/vmx104/
-show chassis hardware.txt  show interfaces extensive.txt  show version.txt
-```
-The data collected is then pushed automatically on the remote repository:  
-```
-# git status
-```
-```
-# git log -1
-```
-So the data collected is available on the remote repository: [**vmx104**](data_collected/vmx104)  
 
 ## Unplanned maintenance operations demo
 
