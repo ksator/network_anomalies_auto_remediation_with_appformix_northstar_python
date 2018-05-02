@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ksator/event_driven_junos_device_maintenance_with_appformix_northstar_python.svg?branch=master)](https://travis-ci.org/ksator/event_driven_junos_device_maintenance_with_appformix_northstar_python)
+[![Build Status](https://travis-ci.org/ksator/network_anomalies_automated_remediation_with_appformix_northstar_python.svg?branch=master)](https://travis-ci.org/ksator/network_anomalies_automated_remediation_with_appformix_northstar_python)  
 
 ## Documentation structure
 [**About this repo**](README.MD#about-this-repo)  
@@ -305,7 +305,7 @@ The syntax of the python scripts in this repository is tested automatically by T
 The files [**.travis.yml**](.travis.yml) and [**requirements.txt**](requirements.txt) at the root of this repository are used for this.  
 
 Here's the last build status  
-[![Build Status](https://travis-ci.org/ksator/event_driven_junos_device_maintenance_with_appformix_northstar_python.svg?branch=master)](https://travis-ci.org/ksator/event_driven_junos_device_maintenance_with_appformix_northstar_python)
+[![Build Status](https://travis-ci.org/ksator/network_anomalies_automated_remediation_with_appformix_northstar_python.svg?branch=master)](https://travis-ci.org/ksator/network_anomalies_automated_remediation_with_appformix_northstar_python)  
 
 ## Looking for more automation solutions
 
