@@ -59,7 +59,7 @@ This repository uses the following main building blocks:
 Run these commands to clone this repository:
 ```
 sudo -s
-git clone https://github.com/ksator/appformix_northstar_python_event_driven_device_maintenance.git 
+git clone https://github.com/ksator/network_anomalies_auto_remediation_with_appformix_northstar_python.git
 ```
 
 ## Requirements to use this repository 
@@ -67,7 +67,7 @@ git clone https://github.com/ksator/appformix_northstar_python_event_driven_devi
 Run these commands to install the python library junos-eznc (also know as PyEZ) and its dependencies.
 ```
 sudo -s
-cd appformix_northstar_python_event_driven_device_maintenance
+cd network_anomalies_auto_remediation_with_appformix_northstar_python
 apt-get update && apt-get upgrade
 apt-get install -y python-dev libxml2-dev python-pip libxslt1-dev build-essential libssl-dev libffi-dev git curl
 pip install -r requirements.txt
